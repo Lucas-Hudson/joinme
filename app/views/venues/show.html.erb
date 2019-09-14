@@ -1,0 +1,144 @@
+<div style="padding:2em; background-color: black">
+
+
+
+<div class="container-fluid" style="width:75em; background-color: black">
+  <div class="row">
+
+    <div class="col" style="margin:0; padding:0em">
+      <%= video_tag(url_for(@venue.video), style: "width:100%; height:100%; object-fit:cover", poster: url_for(@venue.thumbnail), autoplay: "true", controls: "true", muted: "true") %>
+    </div>
+
+    <div class="col" style="margin:0 0.2em; padding:0em; width:100%; background-image: url(<%= url_for(@venue.images[0]) %>); background-size: cover">
+    </div>
+
+    <div class="col-2" style="margin:0 0.2em; padding:0em">
+
+      <div class="row" style="margin:0em; margin-bottom:0.4em; padding:0em; height:49.4%; width:100%; background-image: url(<%= url_for(@venue.images[1]) %>); background-size: cover">
+      </div>
+
+      <div class="row" style="margin:0em; padding:0em; height:49.4%; width:100%; background-image: url(<%= url_for(@venue.images[2]) %>); background-size: cover">
+      </div>
+
+    </div>
+
+    <div class="col" style="margin:0 0.2em; padding:0em; width:100%; background-image: url(<%= url_for(@venue.images[3]) %>); background-size: cover">
+    </div>
+
+  </div>
+
+</div>
+
+</div>
+
+<div class="container">
+  <div class="row align-items-center" style="height:250px">
+    <div class="col-4">
+        <h6>1.2km</h6>
+        <h4><%= @venue.name %></h4>
+        <p><%= @venue.city %><br>
+          Ouvert jusqu’à 01:00
+        </p>
+        <a class="btn btn-primary my-primary-gradient" style="border-radius:5em"
+        <%= link_to "STUDIEUX", root_path %></a>
+        <a class="btn btn-primary my-primary-gradient" style="border-radius:5em" <%= link_to "ITALIAN FOOD", root_path %></a>
+    </div>
+    <div class="col">
+      <h5>Description</h5>
+      <p><%= @venue.description %></p>
+    </div>
+  </div>
+</div>
+
+<br>
+
+
+
+
+
+<br><br>
+
+<div class="container">
+  <div class="row">
+
+    <div class="col-3">
+      <h4>Prix</h4>
+    </div>
+
+    <div class="col">
+      <div class="row align-items-center">
+
+        <div class="col" style="margin:0em 1em">
+          <div class="row align-items-center border" style="height:15em">
+            <div class="col text-center">
+              <p>€€ Abordable</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col" style="margin:0em 1em">
+          <div class="row align-items-center border" style="height:15em">
+            <div class="col text-center">
+              <p> <%= image_tag("beer.svg", style: "padding-right: 2 px") %> Pinte : 5€</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col" style="margin:0em 1em">
+          <div class="row align-items-center border" style="height:15em">
+            <div class="col text-center">
+              <p> <%= image_tag("fork.svg", style: "padding-right: 5px") %>Oui</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<br><br>
+
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-3">
+            <h4>Ratings</h4>
+            <small><% 5.times do %>
+            <%=image_tag "star-on.svg", style: "width:0.7em; margin-left:-0.15em"%>
+            <% end %>(127 Reviews)</small>
+        </div>
+
+        <div class="col border" style="margin:0em 1em">
+
+            <div class="row" style="margin:1em">
+
+              <div class="col-">
+                <%= image_tag("avatar.jpg", style:"width:3em; border-radius:50%")%>
+              </div>
+
+              <div class="col">
+                <h5 style="margin-bottom:-5px">Peggy Gou</h5>
+                <span style="font-size:1.2em">
+                  <% 5.times do %>
+                  <%=image_tag "star-on.svg", style: "width:0.7em; margin-left:-0.15em"%>
+                  <% end %>
+                </span>
+              </div>
+
+            </div>
+
+            <div class="row" style="margin:1em">
+              <p>En fait la felicità c'est comme un cool food market sauce italienne où on fait la teuf en mangeant des trucs bien bons.En fait la felicità c'est comme un cool food marke t sauce italienne où on fait la teuf en mangeant des trucs bien bons.En fait la felicità c'est comme un cool food market sauce italienne où on fait la teuf en mangeant des trucs bien bons. </p>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+

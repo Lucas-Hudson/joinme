@@ -3,6 +3,11 @@ class VenuesController < ApplicationController
         @venues = Venue.all
     end
 
+    def show
+        @venue = Venue.find(params[:id])
+        @users = User.all
+    end
+
     def new
         @venue = Venue.new
     end
@@ -10,9 +15,9 @@ class VenuesController < ApplicationController
     def create
         @venue = Venue.new(venue_params)
         @venue.owner = current_user
-        # @venue.video.attach(venue_params[:video])
-        # @venue.thumbnail.attach(venue_params[:thumbnail])
-        # @venue.images.attach(venue_params[:images])
+        @venue.video.attach(venue_params[:video])
+        @venue.thumbnail.attach(venue_params[:thumbnail])
+        @venue.images.attach(venue_params[:images])
 
 
         if @venue.save
