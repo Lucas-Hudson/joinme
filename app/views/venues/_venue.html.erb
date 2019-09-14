@@ -2,6 +2,7 @@
 
   <div class="container border" style= "width:20em; border-radius:1em; box-shadow: 0px 0px 27px rgba(0, 0, 0, 0.2);">
     <div class="row">
+      <%= video_tag(url_for(venue.video), class: "video-square", poster: url_for(venue.thumbnail), muted: "true", onmouseover:"this.play()", onmouseout:"this.pause();") %>
     </div>
     <div class="row align-items-center">
       <div class="col- align-items-center">
