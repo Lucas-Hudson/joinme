@@ -1,0 +1,70 @@
+<div class="container">
+
+
+    <!-- /.col-lg-3 -->
+
+    <div class="row">
+        <%= form_for(@venue, :multipart => true) do |f| %>
+        <div class="col-lg-20 col-md-60 mb-20">
+            <div class="card h-100">
+                <h1>Crée ta Venue ici !</h1>
+                <p>Remplis le formulaire ci-dessous</p>
+                
+                <div class="col">
+                    <%= f.label 'Name' %>
+                    <%= f.text_field 'name'%>
+                    <br /> <br />
+                </div>
+                <div class="col">
+                    <%= f.label 'description' %>
+                    <%= f.text_field 'description', class: 'form-control', autofocus: true %>
+                    <br /> <br />
+                </div>
+                <div class="col">
+                    <%= f.label 'address' %>
+                    <%= f.text_field 'address', class: 'form-control', autofocus: true %>
+                    <br /> <br />
+                </div>
+               
+                <div class="col">
+                    <%= f.label 'City' %>
+                    <%= f.text_field 'city', class: 'form-control', autofocus: true %>
+                    <br /> <br />
+                </div>
+                <div class="form-group">
+                    <%= f.label 'zip_code' %>
+                    <%= f.number_field 'zip_code', class: 'form-control', autofocus: true %>
+                    <br /> <br />
+                </div>
+                <div class="col">
+                    <%= f.label 'min drink price' %>
+                    <%= f.number_field 'min_drink_price', class: 'form-control', autofocus: true %>
+                    <br /> <br />
+                </div>
+              <!--  <div class="form-group">
+                    <%= f.label 'video' %>
+                    <%= f.file_field 'video' %>
+                    <br /> <br />
+                </div>
+                <div class="form-group">
+                    <%= f.label 'thumbnail' %>
+                    <%= f.file_field 'thumbnail' %>
+                    <br /> <br />
+                </div>
+                <div class="form-group">
+                    <%= f.label 'images' %>
+                    <%= f.file_field 'images', multiple: true %>
+                    <br /> <br />
+                </div> -->
+
+                <%= submit_tag "Create Venue" %>
+            </div>
+        </div>
+        <%end%>
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.col-lg-9 -->
+</div>
+<!-- /.row -->
+</div>

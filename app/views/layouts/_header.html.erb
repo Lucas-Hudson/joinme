@@ -23,7 +23,7 @@
             <!-- Img -->
             <%= image_tag "nav-inbox-on.svg", style: 'width:5.8em; padding-left:4em' %>
             <!-- Notification -->
-            <span style="position: absolute; left:5.5em;" class="badge badge-danger"><%= @invitations_as_admin.count + @invitations_as_guest.count %></span>
+            <span style="position: absolute; left:5.5em;" class="badge badge-danger">0</span>
           </div>
           <!-- Text column -->
           <div class="col-">
@@ -33,14 +33,7 @@
       </div>
       <!-- Dropdown elements -->
       <div class="dropdown-menu dropdown-menu-right scrollable-menu" aria-labelledby="navbarDropdown" style="width:30em">
-        <h6 class="dropdown-header">Mes Invitations</h6>
-          <% @invitations_as_admin.each do |invitation|%>
-            <%= render 'invitations/invitation', invitation: invitation %>
-          <% end %>
-        <h6 class="dropdown-header">Invitations Reçues</h6>
-          <% @invitations_as_guest.each do |invitation|%>
-            <%= render 'invitations/invitation', invitation: invitation.invitation %>
-          <% end %>
+        
 
       </div>
     </a>
@@ -59,7 +52,7 @@
               <!-- Img -->
               <%= image_tag "nav-notification-on.svg", style: 'width:5.8em; padding-left:4em' %>
               <!-- Notification -->
-              <span style="position: absolute; left:5.5em;" class="badge badge-danger"><%= @notifications.count%></span>
+              <span style="position: absolute; left:5.5em;" class="badge badge-danger">0</span>
             </div>
             <!-- Text column -->
             <div class="col-">
@@ -69,9 +62,7 @@
         </div>
         <!-- Dropdown elements -->
         <div class="dropdown-menu dropdown-menu-right scrollable-menu" aria-labelledby="navbarDropdown" style="width:30em">
-          <% @notifications.each do |notification|%>
-            <%= render 'notifications/notification', notification: notification %>
-          <%end%>
+          
           <div class="text-center" style= "margin-top:0.4em">
             <a href="#">More</a>
           </div>
