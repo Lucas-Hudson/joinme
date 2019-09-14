@@ -1,27 +1,31 @@
-<section class="parallax-container">
-    <div class="parallax-img">
-      <%= video_tag("homepage.mp4", class: "video-homepage", autoplay: "true", loop: "true", muted: "true") %>
-    </div>
-</section>
+<!-- Image bannière -->
+<div style="min-width:100%; height:35vh; background-size: cover; background-repeat: no-repeat; background-image: url('https://joinme-thp.s3-eu-west-1.amazonaws.com/home_banner_text.jpg')"></div>
 
-<br><br><br><br><br><br><br><br><br><br>
+<br><br>
 
-<section class="content" style="background-color:white">
-  <br>
-  <div class="container ParallaxContent">
-
-    <h2 style="font-weight:700">Live Events</h2><br>
+<!-- Bloc Venues -->
+<div class="container" style="min-width:70em">
 
     <div class="row">
 
-      <% @venues.each do |venue|%>
-      <div class="col-4" style="padding-bottom:2em">
-        <%= render 'venue', venue: venue %>
+<!-- Si aucun Venue, afficher "Pas de Venues créés...", sinon afficher "Ambiances Live" -->
+      <% if @venues == nil %>
+        <div class="col text-center">
+          <h2 style="color:grey">Pas de Venues créés...</h2>
+        </div>
+      <% else %>
+      <div class="col-12">
+        <h3 style="padding-left:1em"><strong>Ambiances Live</strong></h3><br>
       </div>
       <% end %>
+
+<!-- Afficher toutes les Venues -->
+      <% @venues.each do |venue|%>
+        <div class="col-4" style="padding-bottom:2em">
+          <%= render 'venue', venue: venue %>
+        </div>
+      <% end %>
+
     </div>
 
-
-
-  </div>
-</section>
+</div>
