@@ -1,0 +1,71 @@
+<div style="min-width:100%; min-height:100vh; background-size: cover; background-repeat: no-repeat; background-image: url('/assets/bg-palmtree.jpg')">
+
+<br>
+
+  <div class="container" style="width:30em; background-color:white; border-radius: 3em">
+
+    <br>
+
+    <div class="row justify-content-center">
+      <%= image_tag "logo.png", class: "alpha-shadow", style: "width: 35%" %>
+    </div>
+
+    <div class="row justify-content-center" style="padding-top:2em">
+      <h1 style="font-weight:800">Make Your Day</h1>
+    </div>
+
+
+    <div class="container" style="width:75%; padding-top:0.5em">
+
+      <%= form_for resource, as: resource_name, url: registration_path(resource_name), html: { class: "form-signin mt-3" } do |f| %>
+        <%= devise_error_messages! %>
+        <div class="form-group">
+          <%= f.email_field :email, placeholder: "Email", autocomplete: "email", class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.password_field :password, placeholder: "Password (minimum 6 characters)", autocomplete: "new-password", class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.password_field :password_confirmation, placeholder: "Password confirmation", autocomplete: "new-password", class: "form-control" %>
+        </div>
+        <div class="actions mt-3">
+          <%= f.submit "Sign up", class: "btn btn-lg btn-primary btn-block my-primary-gradient", style: "border-radius:50px" %>
+        </div>
+      <% end %>
+    </div>
+
+    <br>
+
+    <div class="row justify-content-center">
+      <p>OR</p>
+    </div>
+
+    <div class="row justify-content-center" style="margin-top:-1em">
+      <div class="col-">
+        <%= image_tag "facebook.jpg", style: "width: 3em; margin:1em; border-radius:50%" %>
+      </div>
+      <div class="col-">
+        <%= image_tag "google.jpg", style: "width: 3em; margin:1em; border-radius:50%; border: 0.2px solid grey" %>
+      </div>
+      <div class="col-">
+        <%= image_tag "instagram.jpg", style: "width: 3em; margin:1em; border-radius:50%" %>
+      </div>
+    </div>
+
+    <div class="container text-center" style="width:60%">
+      <p><small>By signin up, you confirm that you agree to our <a href="#">Terms of Use</a> and have read and understood our <a href="#">Privacy Policy</a>.</small> </p>
+    </div>
+
+    <div class="text-center" style="padding-top:0.5em; padding-bottom:1em">
+      <p>J'ai déjà un compte : <strong><%= render "devise/shared/links" %></strong></p>
+    </div>
+
+        <div class="row my-bg-grey" style="border-top: solid 1px rgba(0,0,0,0.1); border-radius:0em 0em 3em 3em">
+          <div class="col text-center" style="padding:1em">
+            <%= link_to "Are you a business? Click here.", root_path, style:"font-weight:400" %>
+          </div>
+        </div>
+
+  </div>
+
+</div>
