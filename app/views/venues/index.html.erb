@@ -1,0 +1,27 @@
+<section class="parallax-container">
+    <div class="parallax-img">
+      <%= video_tag("homepage.mp4", class: "video-homepage", autoplay: "true", loop: "true", muted: "true") %>
+    </div>
+</section>
+
+<br><br><br><br><br><br><br><br><br><br>
+
+<section class="content" style="background-color:white">
+  <br>
+  <div class="container ParallaxContent">
+
+    <h2 style="font-weight:700">Live Events</h2><br>
+
+    <div class="row">
+
+      <% @venues.each do |venue|%>
+      <div class="col-4" style="padding-bottom:2em">
+        <%= render 'venue', venue: venue %>
+      </div>
+      <% end %>
+    </div>
+
+
+
+  </div>
+</section>

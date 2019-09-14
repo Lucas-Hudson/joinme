@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="17px" height="17px" viewBox="0 0 17 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
+    <title>status-cant-join</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="8.5" cy="8.5" r="8"></circle>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Event-/-Status-/-Can't-Join" transform="translate(1.000000, 1.000000)">
+            <g id="status-cant-join" transform="translate(-1.000000, -1.000000)">
+                <g id="Oval-3-Copy">
+                    <use fill="#FF6C86" xlink:href="#path-1"></use>
+                    <use fill="#EE4949" xlink:href="#path-1"></use>
+                </g>
+                <path d="M11.2754907,11.7632566 C10.9761449,12.0789145 10.4910643,12.0789145 10.1923568,11.7632566 L8.50031913,9.72393154 L6.80828147,11.7625835 C6.50893569,12.0782414 6.02385511,12.0782414 5.7251476,11.7625835 C5.42580182,11.4469256 5.42580182,10.9354118 5.7251476,10.6204269 L7.4854795,8.50033652 L5.72450933,6.37890005 C5.42516356,6.06324215 5.42516356,5.55240133 5.72450933,5.23674343 C6.02385511,4.92108552 6.50829743,4.92108552 6.80764321,5.23674343 L8.50031913,7.2767415 L10.1923568,5.23674343 C10.4917026,4.92108552 10.9761449,4.92108552 11.2754907,5.23674343 C11.5748364,5.55240133 11.5748364,6.0639152 11.2754907,6.37890005 L9.51515877,8.50033652 L11.2754907,10.6204269 C11.5748364,10.9360848 11.5748364,11.4475987 11.2754907,11.7632566 Z" id="Shape-Copy" fill="#FFFFFF" fill-rule="nonzero"></path>
+            </g>
+        </g>
+    </g>
+</svg>
