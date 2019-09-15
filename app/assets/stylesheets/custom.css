@@ -13,7 +13,7 @@
   }
 
   .my-text-primary-color {
-  background: -webkit-linear-gradient(right, #2EB1F3, #174AED);
+  background: -webkit-linear-gradient(right, rgb(34, 36, 37), #174AED);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }

@@ -1,0 +1,81 @@
+<div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active" data-interval="10000" >
+      <%= image_tag "carousel1.0jpg", class:"d-block w-100"  %>
+      <div class="centered carousel-title-1 text-white">
+        Tame your party animal.
+      </div>
+    </div>
+    <div class="carousel-item" data-interval="4000" >
+      <%= image_tag "carousel1.1jpg", class:"d-block w-100" %>
+      <div class="centered carousel-title-2 text-white">
+        100% fun.</br> Even when you're 50% not.
+      </div>
+        </div>
+
+    <div class="carousel-item" >
+      <%= image_tag "carousel1.2jpg", class:"d-block w-100" %>
+      <div class="centered carousel-title-3 text-white">
+        Join them? </br> Nah,</br>join me.
+      </div>
+    </div>
+  </div>
+
+
+  <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
+    <span aria-hidden="true"></span>
+    <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span> -->
+    
+  </a>
+
+  <a class="carousel-control-next" href="#carouselExampleInterval" role="button" data-slide="next">
+    <span aria-hidden="true"></span>
+    <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span> -->
+   
+  </a>
+</div>
+
+<h4 class="ml-5" style="font-weight:bold">Liveeee Events</h4>
+
+
+
+<style>
+
+.carousel-item{
+  /* width:640px; */
+  height:780px; 
+}
+
+
+.centered {
+  font-family: 'Nunito Sans', sans-serif;
+  position: absolute;
+  font-size: 64px;
+  font-weight: 700;  
+  transform: translate(-50%, -50%);
+}
+
+.carousel-title-1{
+  top: 37%;
+  left: 35%;
+}
+
+.carousel-title-2{
+  top: 35%;
+  left: 66%;
+  
+}
+
+.carousel-title-3{
+  top: 32%;
+  left: 20%;
+}
+
+
+.inline-card{
+  display: flex;
+  justify-content: space-around;
+  margin-top:40px
+}
+
+</style>
