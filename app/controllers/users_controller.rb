@@ -2,6 +2,7 @@ class UsersController < ApplicationController
     
     def show
         @user = User.find(params[:id])
+        @friends_count = @user.friends.count
     end
 
     def index
