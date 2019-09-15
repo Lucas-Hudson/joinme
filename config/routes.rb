@@ -6,5 +6,4 @@ Rails.application.routes.draw do
   resources :users
   resources :venues
   resources :friendships
- 
 end
