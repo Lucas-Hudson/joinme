@@ -17,7 +17,9 @@ class UsersController < ApplicationController
 
     def update
         @user = current_user
-        @user.avatar.attach(user_update[:avatar])
+        if user_update[:avatar] #Evite l'erreur si le user edite son profil sans éditer sa photo
+          @user.avatar.attach(user_update[:avatar])
+        end
 
         @user.update(user_update)
         redirect_to user_path(@user.id)
