@@ -4,9 +4,10 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
     end
 
-    def edit
-        @user = current_user
-    end
+  def index
+    # Show all users who aren't the current_user's friends
+    @users = User.all - Array(current_user) - current_user.friends
+  end
 
     def update
         @user = current_user
