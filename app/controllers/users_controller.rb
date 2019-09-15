@@ -20,7 +20,7 @@ class UsersController < ApplicationController
         @user.avatar.attach(user_update[:avatar])
 
         @user.update(user_update)
-        redirect_to root_path
+        redirect_to user_path(@user.id)
     end
 
     private
