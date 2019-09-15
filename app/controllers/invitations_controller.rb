@@ -1,4 +1,4 @@
-class InvitatonsController < ApplicationController
+class InvitationsController < ApplicationController
     before_action
     def index
         @invitations = Invitation.all
