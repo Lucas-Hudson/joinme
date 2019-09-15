@@ -1,10 +1,8 @@
-<%= link_to 'trouve des amis ici !', users_path %>
-
 <br><br>
 <div class="container" style="width:40em">
   <div class="row">
     <div class="col-">
-      <%= image_tag "avatar.jpg", style: "width:12em; border-radius:1em; margin:1em" %>
+      <%= image_tag url_for(current_user_avatar), style: "width:12em; border-radius:1em; margin:1em" %>
     </div>
     <div class="col" style="line-height:2em">
 
@@ -14,8 +12,8 @@
 
       <div class="row" style="padding-top:1em">
         <div class="col">
-          <%= link_to users_path, class:"text-decoration-none" do %>
-            <p style="font-weight:600; color:black; margin:0em">150</p>
+          <%= link_to friendships_path, class:"text-decoration-none" do %>
+            <p style="font-weight:600; color:black; margin:0em"><%= @friends_count%></p>
             <small style="font-weight:600; color:black; margin:0em">Amis</small>
           <% end %>
         </div>
@@ -40,7 +38,20 @@
 
   <% if current_user.is_owner? %>
   <div class="container">
-  <%= link_to "Créer Venue", new_venue_path, class: "btn btn-primary" %>
+    <br><br>
+    <div class="row text-center">
+      <div class="col">
+        <%= link_to "Créer Venue", new_venue_path, class: "btn btn-primary" %>
+      </div>
+    </div>
   </div>
   <% end %>
-  
+
+  <div class="container">
+    <br><br>
+    <div class="row text-center">
+      <div class="col">
+        <%= link_to 'Trouver des Amis', users_path, class:"btn btn-primary" %>
+      </div>
+    </div>
+  </div>
