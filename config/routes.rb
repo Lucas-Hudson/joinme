@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
- 
-  devise_for :users
   root 'venues#index'
 
+  devise_for :users
+  
   resources :users
   resources :venues
   resources :friendships
