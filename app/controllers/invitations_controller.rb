@@ -4,11 +4,12 @@ class InvitationsController < ApplicationController
         @invitations = Invitation.all
         @current_events_as_admin = current_user.current_events_as_admin
         @past_events_as_admin = current_user.past_events_as_admin
+        @friends = current_user.friends
     end
 
     def show
         @invitation = Invitation.find(params[:id])
-       
+
     end
 
     def new
@@ -22,7 +23,7 @@ class InvitationsController < ApplicationController
         puts "#" * 20
         puts @venue.id
         puts "#" *20
-        
+
         @invitation = Invitation.new(admin_id: current_user.id, venue_id: @venue.id, start_date: Date.today)
         if @invitation.save
             redirect_to invitations_path
@@ -40,8 +41,8 @@ class InvitationsController < ApplicationController
     def destroy
         @invitation = Invitation.find(params[:id])
         if @invitation.destroy
-            redirect_to root_path
-            flash[:success] = "L'invitation est supprimée" 
+            redirect_to invitations_path
+            flash[:success] = "L'invitation est supprimée"
         end
    end
 end
