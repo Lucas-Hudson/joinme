@@ -1,14 +1,15 @@
 class UsersController < ApplicationController
-    
+
     def show
         @user = User.find(params[:id])
         @friends_count = @user.friends.count
     end
 
-    def index
-      # Show all users who aren't the current_user's friends
-      @users = User.all - Array(current_user) - current_user.friends
-    end
+  def index
+    # Show all users who aren't the current_user's friends
+    @users_to_add = User.all - Array(current_user) - current_user.friends - current_user.sent_friend_requests
+    @sent_friend_requests = current_user.sent_friend_requests
+  end
 
     def edit 
       @user = current_user

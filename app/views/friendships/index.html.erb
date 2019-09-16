@@ -16,12 +16,31 @@
 
   <div class="container" style="background-color:white">
 
-    <div class="row align-items-center" style="padding:2em">
-      <div class="col text-center" style="color:grey">
-        <p>Pas de demandes en attente</p>
+    <% if @received_friend_requests.count > 0 %>
+      <% @received_friend_requests.each do |requesting_friend| %>
+      <div class="row align-items-center">
+        <div class="col-">
+          <%= image_tag "avatar.jpg", style: "width:4em; border-radius:50%; margin:0.5em" %>
+        </div>
+        <div class="col">
+          <p style="margin:0em"><%= requesting_friend.first_name %> <strong><%= requesting_friend.last_name %></strong></p>
+        </div>
+        <div class="col-">
+          <!-- A CHANGER -->
+          <%= link_to "Refuser", friendship_path(requesting_friend), method: "delete", class:"btn btn-outline-primary", style:"margin-right:1em" %>
+        </div>
+        <div class="col-">
+          <%= link_to "Accepter", friendship_path(requesting_friend, status: 1), method: "put", class:"btn btn-primary", style:"margin-right:2em" %>
+        </div>
       </div>
-    </div>
-
+      <% end %>
+    <% else %>
+      <div class="row align-items-center" style="padding:2em">
+        <div class="col text-center" style="color:grey">
+          <p>Pas de demandes en attente</p>
+        </div>
+      </div>
+    <% end %>
   </div>
 
   <br><br>
@@ -32,20 +51,27 @@
 
   <div class="container" style="background-color:white">
 
-    <% @friends.each do |friend| %>
-      <%= link_to user_path(friend), style:"text-decoration:none; color:black" do %>
-        <div class="row align-items-center">
-          <div class="col-">
-            <%= image_tag "avatar.jpg", style: "width:4em; border-radius:50%; margin:0.5em" %>
+    <% if @friends.count > 0 %>
+      <% @friends.each do |friend| %>
+        <%= link_to user_path(friend), style:"text-decoration:none; color:black" do %>
+          <div class="row align-items-center">
+            <div class="col-">
+              <%= image_tag "avatar.jpg", style: "width:4em; border-radius:50%; margin:0.5em" %>
+            </div>
+            <div class="col">
+              <p style="margin:0em"><%= friend.first_name %> <strong><%= friend.last_name %></strong></p>
+            </div>
           </div>
-          <div class="col">
-            <p style="margin:0em"><%= friend.first_name %> <strong><%= friend.last_name %></strong></p>
-          </div>
-        </div>
-        <hr>
+          <hr>
+        <% end %>
       <% end %>
+    <% else %>
+      <div class="row align-items-center" style="padding:2em">
+        <div class="col text-center" style="color:grey">
+          <p>Vous n'avez pas encore d'amis</p>
+        </div>
+      </div>
     <% end %>
-
   </div>
 
 
