@@ -12,8 +12,13 @@ class ApplicationController < ActionController::Base
         end
     end
 
+    #User is redirected to edit page on sign up && on sign in (as long as they don't have a first name)
     def after_sign_in_path_for(resource)
-        edit_user_path(current_user.id)
+        if current_user.first_name == nil || current_user.first_name.length == 0 #Check if the first_name is not 
+            edit_user_path(current_user.id)
+        else 
+            root_path
+        end
     end
 
 end
