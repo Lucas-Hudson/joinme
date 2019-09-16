@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_one_attached :avatar
   has_many :friendships, :dependent => :destroy
 
   has_many :sent_friendship_requests, -> { where(status: 0) }, class_name: 'Friendship', foreign_key: :user_id
@@ -17,4 +18,5 @@ class User < ApplicationRecord
 
   has_many :declined_friendships, -> { where(status: 2) }, class_name: 'Friendship', foreign_key: :user_id
   has_many :declined_friends, through: :declined_friendships, source: :friend
+
 end

@@ -2,7 +2,7 @@
 <div class="container" style="width:40em">
   <div class="row">
     <div class="col-">
-      <%= image_tag "avatar.jpg", style: "width:12em; border-radius:1em; margin:1em" %>
+      <%= image_tag url_for(current_user_avatar), style: "width:12em; border-radius:1em; margin:1em" %>
     </div>
     <div class="col" style="line-height:2em">
 
@@ -13,7 +13,7 @@
       <div class="row" style="padding-top:1em">
         <div class="col">
           <%= link_to friendships_path, class:"text-decoration-none" do %>
-            <p style="font-weight:600; color:black; margin:0em">150</p>
+            <p style="font-weight:600; color:black; margin:0em"><%= @friends_count%></p>
             <small style="font-weight:600; color:black; margin:0em">Amis</small>
           <% end %>
         </div>

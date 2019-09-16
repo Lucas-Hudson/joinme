@@ -17,6 +17,11 @@
         <%= f.date_select :date_of_birth %></div>
       <div class="field">
 
+      <div class="form-group">
+        <%= f.label 'avatar' %>
+        <%= f.file_field 'avatar' %>
+      </div> 
+
         <div class="actions mt-5">
           <%= f.submit "Update", class: "btn btn-lg btn-primary btn-block" %>
         </div>
