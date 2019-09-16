@@ -1,11 +1,11 @@
-<div class="container">
+<div class="container" style="min-width:60em">
   <br><br>
 
   <h2>Prochains événements</h2><br>
 
   <div class="row">
     <% @current_events_as_admin.each do |current_event| %>
-    <div class="col-4">
+    <div class="col-6">
       <%= render 'invitation', invitation: current_event %>
     </div>
     <% end %>
