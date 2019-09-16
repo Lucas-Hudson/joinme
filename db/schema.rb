@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_15_150459) do
+ActiveRecord::Schema.define(version: 2019_09_16_092107) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,16 @@ ActiveRecord::Schema.define(version: 2019_09_15_150459) do
     t.datetime "updated_at", null: false
     t.index ["admin_id"], name: "index_invitations_on_admin_id"
     t.index ["venue_id"], name: "index_invitations_on_venue_id"
+  end
+
+  create_table "user_invites", force: :cascade do |t|
+    t.bigint "invitation_id"
+    t.bigint "guest_id"
+    t.integer "status", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["guest_id"], name: "index_user_invites_on_guest_id"
+    t.index ["invitation_id"], name: "index_user_invites_on_invitation_id"
   end
 
   create_table "users", force: :cascade do |t|

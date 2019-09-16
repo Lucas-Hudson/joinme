@@ -1,0 +1,19 @@
+<br><br>
+
+<div class="container" style="width:30em">
+
+  <h1>Prochain événement</h1><br>
+
+  <% @current_events_as_admin.each do |current_event| %>
+  <%= render 'invitation', invitation: current_event %>
+  <% end %>
+
+  <br>
+  <h1>Evenement passés</h1><br>
+  <% @past_events_as_admin.each do |past_event| %>
+  <%= render 'invitation', invitation: past_event %>
+  <% end %>
+
+
+
+</div>

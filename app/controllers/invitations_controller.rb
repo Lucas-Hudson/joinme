@@ -2,10 +2,13 @@ class InvitationsController < ApplicationController
     before_action
     def index
         @invitations = Invitation.all
+        @current_events_as_admin = current_user.current_events_as_admin
+        @past_events_as_admin = current_user.past_events_as_admin
     end
 
     def show
-        @invitation = Invitation.find(params[:id]) 
+        @invitation = Invitation.find(params[:id])
+       
     end
 
     def new
@@ -20,9 +23,9 @@ class InvitationsController < ApplicationController
         puts @venue.id
         puts "#" *20
         
-        @invitation = Invitation.new(admin_id: current_user.id, venue_id: @venue.id)
+        @invitation = Invitation.new(admin_id: current_user.id, venue_id: @venue.id, start_date: Date.today)
         if @invitation.save
-            #redirect_to invitatoin_index
+            redirect_to invitations_path
         else
             render 'new'
         end
