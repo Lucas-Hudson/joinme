@@ -2,7 +2,8 @@ class UsersController < ApplicationController
 
   def index
     # Show all users who aren't the current_user's friends
-    @users = User.all - Array(current_user) - current_user.friends
+    @users_to_add = User.all - Array(current_user) - current_user.friends - current_user.sent_friend_requests
+    @sent_friend_requests = current_user.sent_friend_requests
   end
 
   def show
