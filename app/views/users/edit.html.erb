@@ -4,7 +4,10 @@
     <div class="col-md-6 offset-md-3">
       <br><br><br>
       <%= form_for @user,  url: user_path, html: { class: "form-signin mt-3" } do |f| %>
-      <h1 class="h3 mb-3 font-weight-normal text-center">Editing your profil</h1>
+      <h1 class="h3 mb-3 font-weight-normal text-center">Edit profile</h1>
+
+
+      
       <div class="form-group">
         <%= f.label :first_name, "First_name" %><br />
         <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "form-control" %>
