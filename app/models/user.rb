@@ -35,6 +35,4 @@ class User < ApplicationRecord
   has_many :received_invitation_notifications, class_name: 'InvitationNotification', foreign_key: :recipient
   has_many :unread_friendship_notifications, -> { where(is_read?: false) }, class_name: 'FriendshipNotification', foreign_key: :recipient
   has_many :unread_invitation_notifications, -> { where(is_read?: false) }, class_name: 'InvitationNotification', foreign_key: :recipient
-
-
 end
