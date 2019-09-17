@@ -2,10 +2,8 @@ class FriendshipsController < ApplicationController
 
   def index
     @friends = current_user.friends
-
     @sent_friend_requests = current_user.sent_friend_requests
     @received_friend_requests = current_user.received_friend_requests
-
   end
 
   def create
