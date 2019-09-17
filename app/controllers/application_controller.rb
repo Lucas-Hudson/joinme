@@ -1,12 +1,12 @@
 class ApplicationController < ActionController::Base
     include Devise::Controllers::Helpers  #Nous permet d'accéder depuis le controller aux variables devise (current_user)
     before_action :authenticate_user! #All pages are blocked and only signed in users can access it (except)
-    helper_method :current_user_avatar
+    helper_method :user_avatar
 
     #Allows us to grab current_user profile pic in all cases (if there is no attached avatars, we display a default avatar)
-    def current_user_avatar
-        if current_user.avatar.attached?
-            avatar = current_user.avatar
+    def user_avatar(user)
+        if user.avatar.attached?
+            avatar = user.avatar
         else
             avatar = "https://joinme-thp.s3-eu-west-1.amazonaws.com/avatar.jpg"
         end
@@ -14,9 +14,9 @@ class ApplicationController < ActionController::Base
 
     #User is redirected to edit page on sign up && on sign in (as long as they don't have a first name)
     def after_sign_in_path_for(resource)
-        if current_user.first_name == nil || current_user.first_name.length == 0 #Check if the first_name is not 
+        if current_user.first_name == nil || current_user.first_name.length == 0 #Check if the first_name is not
             edit_user_path(current_user.id)
-        else 
+        else
             root_path
         end
     end
