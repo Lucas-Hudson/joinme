@@ -19,5 +19,8 @@ class UserInvitesController < ApplicationController
         Invitation.create(admin_id: current_user.id, venue_id: params[:venue_id], start_date: Date.today)
         UserInvite.create(invitation_id: Invitation.last.id, guest_id: params[:guest])
       end
+      
+      @venue_reference = Invitation.find(params[:invitation]).venue
+      InvitationNotification.create!(actor: current_user, recipient_id: params[:guest], action_id: 4, reference: @venue_reference)
   end
 end

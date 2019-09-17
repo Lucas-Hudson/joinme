@@ -1,0 +1,2 @@
+class NotifActionsController < ApplicationController
+end

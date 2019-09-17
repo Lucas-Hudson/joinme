@@ -5,6 +5,11 @@ class InvitationsController < ApplicationController
         @current_events_as_admin = current_user.current_events_as_admin
         @past_events_as_admin = current_user.past_events_as_admin
         @friends = current_user.friends
+
+     #On marque la notif comme read si le user arrive sur la index page depuis une notif
+     if params[:notif]
+        InvitationNotification.find(params[:notif]).update(is_read?: true) 
+      end
     end
 
     def show
@@ -18,7 +23,6 @@ class InvitationsController < ApplicationController
 
     def create
         @venue = Venue.find(params[:venue_id])
-
         @invitation = Invitation.new(admin_id: current_user.id, venue_id: @venue.id, start_date: Date.today)
 
         if @invitation.save

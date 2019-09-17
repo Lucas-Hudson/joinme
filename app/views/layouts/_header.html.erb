@@ -33,7 +33,13 @@
                 <!-- Img -->
                 <%= image_tag "nav-notification-on.svg", style: 'width:5.8em; padding-left:4em' %>
                 <!-- Notification -->
-                <span style="position: absolute; left:5.5em;" class="badge badge-danger">0</span>
+                <span style="position: absolute; left:5.5em;" class="badge badge-danger">
+                  <% if received_notifications != nil %>
+                    <%= unread_notifications.count %>
+                  <% else %>
+                    0
+                  <% end %>
+                </span>
               </div>
               <!-- Text column -->
               <div class="col-">
@@ -45,12 +51,14 @@
           <div class="dropdown-menu dropdown-menu-right scrollable-menu" aria-labelledby="navbarDropdown"
             style="width:30em">
 
-            <% 5.times do %>
-            <%= render 'layouts/notification' %>
+            <% if received_notifications != nil %>
+              <% received_notifications.each do |notif| %>
+                <%= render 'layouts/notification', notif: notif %>
+              <% end %>
+              <div class="text-center" style="margin-top:0.4em">
+                <a href="#">More</a>
+              </div>
             <% end %>
-            <div class="text-center" style="margin-top:0.4em">
-              <a href="#">More</a>
-            </div>
 
           </div>
         </a>
