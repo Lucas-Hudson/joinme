@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
     before_action :authenticate_user! #All pages are blocked and only signed in users can access it (except)
     helper_method :received_notifications
     helper_method :avatar
+    helper_method :unread_notifications
 
     #Allows us to grab current_user profile pic in all cases (if there is no attached avatars, we display a default avatar)
     def avatar(avatar_holder)
@@ -25,4 +26,9 @@ class ApplicationController < ActionController::Base
     def received_notifications
         current_user.received_friendship_notifications + current_user.received_invitation_notifications
     end
+    
+    def unread_notifications
+        current_user.unread_friendship_notifications + current_user.unread_invitation_notifications        
+    end
+
 end
