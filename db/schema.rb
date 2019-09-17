@@ -61,11 +61,13 @@ ActiveRecord::Schema.define(version: 2019_09_17_110145) do
     t.bigint "actor_id"
     t.bigint "recipient_id"
     t.bigint "action_id"
+    t.bigint "reference_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["action_id"], name: "index_invitation_notifications_on_action_id"
     t.index ["actor_id"], name: "index_invitation_notifications_on_actor_id"
     t.index ["recipient_id"], name: "index_invitation_notifications_on_recipient_id"
+    t.index ["reference_id"], name: "index_invitation_notifications_on_reference_id"
   end
 
   create_table "invitations", force: :cascade do |t|

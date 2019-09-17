@@ -15,9 +15,9 @@
 
     <% elsif notif.is_a?(InvitationNotification) %>
 
-      <%= link_to invitations_path do %>
+      <%= link_to invitations_path(notif: notif) do %>
         <div class="col text-truncate" style="height:3em; margin-top:auto; margin-bottom:auto; padding-left:1em">
-          <small class="text-truncate"><strong> <%= notif.actor.first_name %> <%=notif.actor.last_name %></strong> <%= notif.action.content %> <strong>notif.reference</strong>. <br>
+          <small class="text-truncate"><strong> <%= notif.actor.first_name %> <%=notif.actor.last_name %></strong> <%= notif.action.content %> <strong><%= notif.reference.name %> </strong>. <br>
           <span class="my-primary-grey"><%= notif.updated_at %></span></small>
         </div>
       <% end %>
