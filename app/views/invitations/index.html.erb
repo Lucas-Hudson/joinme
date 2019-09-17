@@ -1,25 +1,40 @@
-<div class="container" style="min-width:60em">
-  <br><br>
+<div class="my-bg-grey">
+    <div class="container" style="min-width:60em">
+    <br>
 
-  <h2>Prochains événements</h2><br>
-
-  <div class="row">
-    <% @current_events_as_admin.each do |current_event| %>
-    <div class="col-6">
-      <%= render 'invitation', invitation: current_event %>
+    <h2 style="padding-left:2em">Prochains événements</h2><br>
+      <% if @current_events_as_admin.count != 0 %>
+        <div class="row">
+          <% @current_events_as_admin.each do |current_event| %>
+          <div class="col-6">
+            <%= render 'invitation', invitation: current_event %>
+          </div>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="row align-items-center" style="padding:2em; height: 20em">
+          <div class="col text-center" style="color:grey">
+            <h3>Pas d'événements prévus</h3>
+            <small><%= link_to "Voir les Venues", venues_path %></small>
+          </div>
+        </div>
+      <% end %>
     </div>
-    <% end %>
+</div>
+
+<br>
+
+<% if @past_events_as_admin.count > 0 %>
+  <div class="container" style="min-width:60em">
+
+    <h2 style="padding-left:2em">Evénements passés</h2><br>
+    <div class="row">
+      <% @past_events_as_admin.each do |past_event| %>
+        <div class="col-6">
+          <%= render 'invitation', invitation: past_event %>
+        </div>
+      <% end %>
+    </div>
 
   </div>
-
-
-
-  <br>
-  <h2>Evenement passés</h2><br>
-  <% @past_events_as_admin.each do |past_event| %>
-  <%= render 'invitation', invitation: past_event %>
-  <% end %>
-
-
-
-</div>
+<% end %>
