@@ -161,7 +161,7 @@
       <div class="col">
       </div>
       <div class="col-">
-        <%= link_to "Share", root_path, class:"btn btn-outline-primary", style:"width:10em; margin-right:1em" %>
+        <%= link_to "Share", new_user_invite_path(@venue.id), class:"btn btn-outline-primary", style:"width:10em; margin-right:1em" %>
       </div>
       <div class="col-">
         <%= link_to "Join", venue_invitations_path(@venue.id), method: :post, class:"btn btn-primary", style:"width:10em; margin-right:1em" %>

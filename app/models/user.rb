@@ -4,8 +4,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
   has_one_attached :avatar
-  #friendship
+
   has_many :friendships, :dependent => :destroy
   has_many :friends, :through => :friendships, :source => :friend
 
@@ -20,10 +21,10 @@ class User < ApplicationRecord
 
   has_many :declined_friendships, -> { where(status: 2) }, class_name: 'Friendship', foreign_key: :user_id
   has_many :declined_friends, through: :declined_friendships, source: :friend
-  ##########
+
   #invitations
-  has_many :invitations
-  ###########
+  has_many :events, class_name: 'UserInvite', foreign_key: :guest_id
+
   #user_invite
   has_many :user_invite
   has_many :current_events_as_admin, -> { where(start_date: Date.today) }, class_name: 'Invitation', foreign_key: :admin_id

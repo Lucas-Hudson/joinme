@@ -1,7 +1,17 @@
 class ApplicationController < ActionController::Base
     include Devise::Controllers::Helpers  #Nous permet d'accéder depuis le controller aux variables devise (current_user)
     before_action :authenticate_user! #All pages are blocked and only signed in users can access it (except)
+    helper_method :set_constants
     helper_method :avatar
+
+    def set_constants
+      current_user.events.each do
+        i = 0
+        i += 1
+        i
+      end
+    end
+
 
     #Allows us to grab current_user profile pic in all cases (if there is no attached avatars, we display a default avatar)
     def avatar(avatar_holder)
@@ -20,5 +30,6 @@ class ApplicationController < ActionController::Base
             root_path
         end
     end
+
 
 end
