@@ -10,7 +10,13 @@ class FriendshipsController < ApplicationController
 
   def create
     @requested_friend = User.find(params[:format])
-    Friendship.create(user: current_user, friend: @requested_friend)
+    friendship = Friendship.new(user: current_user, friend: @requested_friend)
+    if friendship.save
+      FriendshipNotification.create(actor: current_user, recipient: @requested_friend, action_id: 2) #create the notification
+    else
+      render 'new'
+    end
+
   end
 
   def update
