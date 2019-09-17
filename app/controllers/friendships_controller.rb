@@ -14,13 +14,12 @@ class FriendshipsController < ApplicationController
     else
       render 'new'
     end
-
   end
 
   def update
     @friend_request = Friendship.find_by(user: params[:id], friend: current_user)
     @friend_request.update(status: params[:status])
-    FriendshipNotification.create(actor_id: params[:id], recipient: current_user, action_id: 3) #create the notification
+    FriendshipNotification.create!(actor_id: current_user.id, recipient_id: params[:id] , action_id: 3) #create the notification
   end
 
   def destroy

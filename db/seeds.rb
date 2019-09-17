@@ -8,6 +8,7 @@
 
 User.destroy_all
 
+
 puts "Old data deleted"
 
 5.times do
