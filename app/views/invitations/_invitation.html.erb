@@ -6,7 +6,7 @@
 
   <div class="row align-items-center" style="padding-top:0.5em">
     <div class="col-">
-      <%= image_tag "avatar.jpg", style: "width:2.5em; border-radius:5em; margin-left:0.4em" %>
+      <%= image_tag url_for(avatar(invitation.admin)), class:"avatar", style: "margin-left:0.4em" %>
     </div>
     <div class="col text-truncate" style="line-height: 1em; padding:0.5em; margin-top:0.4em">
       <p style="font-weight:600; line-height:0em"><%= invitation.admin.first_name %></p><br>
@@ -18,7 +18,7 @@
     <% if invitation.guests.count != 0 %>
     <% invitation.guests.each do |guest| %>
     <div class="col-sm- text-center" style="padding-right:1em">
-      <%= image_tag url_for(user_avatar(guest)), style: "width:3em; border-radius:50%" %><br>
+      <%= image_tag url_for(avatar(guest)), class:"avatar-bg" %><br>
       <small style="font-size:0.9em"><%= guest.first_name %></small>
     </div>
 
