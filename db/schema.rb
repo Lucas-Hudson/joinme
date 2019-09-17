@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 2019_09_17_082729) do
   end
 
   create_table "friendship_notifications", force: :cascade do |t|
-    t.boolean "is_read?"
+    t.boolean "is_read?", default: false
     t.bigint "actor_id"
     t.bigint "recipient_id"
     t.bigint "action_id"
