@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_16_092107) do
+ActiveRecord::Schema.define(version: 2019_09_17_082729) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,18 @@ ActiveRecord::Schema.define(version: 2019_09_16_092107) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "friendship_notifications", force: :cascade do |t|
+    t.boolean "is_read?"
+    t.bigint "actor_id"
+    t.bigint "recipient_id"
+    t.bigint "action_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["action_id"], name: "index_friendship_notifications_on_action_id"
+    t.index ["actor_id"], name: "index_friendship_notifications_on_actor_id"
+    t.index ["recipient_id"], name: "index_friendship_notifications_on_recipient_id"
+  end
+
   create_table "friendships", force: :cascade do |t|
     t.integer "user_id"
     t.integer "friend_id"
@@ -53,6 +65,12 @@ ActiveRecord::Schema.define(version: 2019_09_16_092107) do
     t.datetime "updated_at", null: false
     t.index ["admin_id"], name: "index_invitations_on_admin_id"
     t.index ["venue_id"], name: "index_invitations_on_venue_id"
+  end
+
+  create_table "notif_actions", force: :cascade do |t|
+    t.string "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "user_invites", force: :cascade do |t|
