@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :invitation_notifications
   resources :friendship_notifications
   resources :notif_actions
   resources :invitatons

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_17_082729) do
+ActiveRecord::Schema.define(version: 2019_09_17_110145) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,18 @@ ActiveRecord::Schema.define(version: 2019_09_17_082729) do
     t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "invitation_notifications", force: :cascade do |t|
+    t.boolean "is_read?", default: false
+    t.bigint "actor_id"
+    t.bigint "recipient_id"
+    t.bigint "action_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["action_id"], name: "index_invitation_notifications_on_action_id"
+    t.index ["actor_id"], name: "index_invitation_notifications_on_actor_id"
+    t.index ["recipient_id"], name: "index_invitation_notifications_on_recipient_id"
   end
 
   create_table "invitations", force: :cascade do |t|

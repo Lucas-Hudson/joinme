@@ -49,12 +49,14 @@
           <div class="dropdown-menu dropdown-menu-right scrollable-menu" aria-labelledby="navbarDropdown"
             style="width:30em">
 
-            <% received_notifications.each do |notif| %>
-              <%= render 'layouts/notification', notif: notif %>
+            <% if received_notifications != nil %>
+              <% received_notifications.each do |notif| %>
+                <%= render 'layouts/notification', notif: notif %>
+              <% end %>
+              <div class="text-center" style="margin-top:0.4em">
+                <a href="#">More</a>
+              </div>
             <% end %>
-            <div class="text-center" style="margin-top:0.4em">
-              <a href="#">More</a>
-            </div>
 
           </div>
         </a>

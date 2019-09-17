@@ -23,7 +23,6 @@ class ApplicationController < ActionController::Base
     end
 
     def received_notifications
-        current_user.received_friendship_notifications
+        current_user.received_friendship_notifications + current_user.received_invitation_notifications
     end
-
 end

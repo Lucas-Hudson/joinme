@@ -18,12 +18,6 @@ class InvitationsController < ApplicationController
 
     def create
         @venue = Venue.find(params[:venue_id])
-        puts "#" *20
-        puts current_user.id
-        puts "#" * 20
-        puts @venue.id
-        puts "#" *20
-
         @invitation = Invitation.new(admin_id: current_user.id, venue_id: @venue.id, start_date: Date.today)
         if @invitation.save
             redirect_to invitations_path
