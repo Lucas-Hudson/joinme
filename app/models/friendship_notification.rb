@@ -1,0 +1,2 @@
+class FriendshipNotification < ApplicationRecord
+end
