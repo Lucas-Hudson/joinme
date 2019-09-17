@@ -1,1 +1,53 @@
-<p>Invite friends here :)</p>
+<div class="my-bg-grey" style="height:100vh">
+
+<br><br><br>
+
+<div class="container">
+  <div class="row align-items-center">
+    <div class="col-">
+      <h2>Inviter des amis</h2>
+    </div>
+    <div class="col">
+    </div>
+    <div class="col-">
+      <%= link_to "Retour", invitations_path %>
+    </div>
+  </div>
+</div>
+
+  <div class="container" style="background-color:white">
+
+      <% @friends_to_invite.each do |friend| %>
+      <div class="row align-items-center">
+        <div class="col-">
+          <%= image_tag "avatar.jpg", style: "width:4em; border-radius:50%; margin:0.5em" %>
+        </div>
+        <div class="col">
+          <p style="margin:0em"><%= friend.first_name %> <strong><%= friend.last_name %></strong></p>
+        </div>
+        <div class="col-">
+          <%= link_to "Envoyer", user_invites_path(invitation: @invitation.id, guest: friend.id), method: "post", class:"btn btn-primary", style:"margin-right:2em" %>
+        </div>
+      </div>
+      <hr>
+      <% end %>
+
+      <% @invitation.guests.each do |guest| %>
+      <div class="row align-items-center">
+        <div class="col-">
+          <%= image_tag "avatar.jpg", style: "width:4em; border-radius:50%; margin:0.5em" %>
+        </div>
+        <div class="col">
+          <p style="margin:0em"><%= guest.first_name %> <strong><%= guest.last_name %></strong></p>
+        </div>
+        <div class="col-">
+          <small style="margin-right:2em">Invitation Envoyée</small>
+        </div>
+      </div>
+      <hr>
+      <% end %>
+
+  </div>
+
+
+</div>

@@ -9,22 +9,21 @@ class InvitationsController < ApplicationController
 
     def show
         @invitation = Invitation.find(params[:id])
-
     end
 
     def new
-        @invitation = Invitation.new
+        @invitation = Invitation.find(params[:format])
+        @friends_to_invite = current_user.friends - current_user.sent_friend_requests - @invitation.guests
+
+        friends_to_add = []
+
     end
 
     def create
         @venue = Venue.find(params[:venue_id])
-        puts "#" *20
-        puts current_user.id
-        puts "#" * 20
-        puts @venue.id
-        puts "#" *20
 
         @invitation = Invitation.new(admin_id: current_user.id, venue_id: @venue.id, start_date: Date.today)
+
         if @invitation.save
             redirect_to invitations_path
         else
