@@ -19,9 +19,6 @@ class InvitationsController < ApplicationController
     def new
         @invitation = Invitation.find(params[:format])
         @friends_to_invite = current_user.friends - current_user.sent_friend_requests - @invitation.guests
-
-        friends_to_add = []
-
     end
 
     def create

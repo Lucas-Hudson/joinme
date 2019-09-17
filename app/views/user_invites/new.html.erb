@@ -26,12 +26,13 @@
           <p style="margin:0em"><%= friend.first_name %> <strong><%= friend.last_name %></strong></p>
         </div>
         <div class="col-">
-          <%= link_to "Envoyer", user_invites_path(invitation: @invitation.id, guest: friend.id), method: "post", class:"btn btn-primary", style:"margin-right:2em" %>
+          <%= link_to "Envoyer", user_invites_path(venue_id: params[:format], guest: friend.id), method: "post", class:"btn btn-primary", style:"margin-right:2em" %>
         </div>
       </div>
       <hr>
       <% end %>
 
+      <% if @invitation != nil %>
       <% @invitation.guests.each do |guest| %>
       <div class="row align-items-center">
         <div class="col-">
@@ -45,7 +46,7 @@
         </div>
       </div>
       <hr>
-      <% end %>
+      <% end %><% end %>
 
   </div>
 

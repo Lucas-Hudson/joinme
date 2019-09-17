@@ -13,8 +13,10 @@
 
       <%= link_to invitations_path do %>
       <div class="col- my-primary-grey">
-        <%= image_tag "nav-inbox-off.svg", style: 'width:5.8em; padding-left:4em' %><span
-          style="margin-left:10px">Inbox</span></div>
+        <%= image_tag "nav-inbox-off.svg", style: 'width:5.8em; padding-left:4em' %>
+        <span style="position: absolute; margin-left:-1.2em;" class="badge badge-danger"><%= current_user.current_events_as_admin.count %></span>
+        <span style="margin-left:10px">Inbox</span>
+      </div>
       <% end %>
 
       <!-- Notification with dropdown ------------------------------------ -->
