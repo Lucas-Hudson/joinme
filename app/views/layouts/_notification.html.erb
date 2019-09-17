@@ -6,7 +6,7 @@
     </div>
 
     <% if notif.is_a?(FriendshipNotification) %>
-      <%= link_to user_path(notif.actor.id) do %>
+      <%= link_to user_path(notif.actor.id, notif: notif) do %>
         <div class="col text-truncate" style="height:3em; margin-top:auto; margin-bottom:auto; padding-left:1em">
           <small class="text-truncate"><strong> <%= notif.actor.first_name %> <%=notif.actor.last_name %></strong> <%= notif.action.content %> <br>
           <span class="my-primary-grey"><%= notif.updated_at %></span></small>

@@ -3,6 +3,13 @@ class UsersController < ApplicationController
     def show
         @user = User.find(params[:id])
         @friends_count = @user.friends.count
+        puts "$"*40
+        params[:notif]
+        puts "$"*40
+        if params[:notif]
+          FriendshipNotification.find(params[:notif]).update(is_read?: true)
+        end
+
     end
 
   def index
