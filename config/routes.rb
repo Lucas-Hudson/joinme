@@ -11,4 +11,8 @@ Rails.application.routes.draw do
 
   resources :friendships
 
+  namespace :admin do
+    root 'admin#index'
+  end
+
 end
