@@ -12,15 +12,22 @@ class UserInvitesController < ApplicationController
   end
 
   def create
-      if current_user.current_events_as_admin.find_by(venue: params[:venue_id])
-        @invitation = current_user.current_events_as_admin.find_by(venue: params[:venue_id])
-        UserInvite.create(invitation_id: @invitation.id, guest_id: params[:guest])
+
+      if params[:invitation_id]
+        @invitation = Invitation.find(params[:invitation_id])
+        UserInvite.create(invitation_id: params[:invitation_id], guest_id: params[:guest_id])
       else
-        Invitation.create(admin_id: current_user.id, venue_id: params[:venue_id], start_date: Date.today)
-        UserInvite.create(invitation_id: Invitation.last.id, guest_id: params[:guest])
+        if current_user.current_events_as_admin.find_by(venue_id: params[:venue_id])
+          @invitation = current_user.current_events_as_admin.find_by(venue: params[:venue_id])
+          UserInvite.create(invitation_id: @invitation.id, guest_id: params[:guest_id])
+        else
+          @invitation = Invitation.create(admin_id: current_user.id, venue_id: params[:venue_id], start_date: Date.today)
+          UserInvite.create(invitation_id: Invitation.last.id, guest_id: params[:guest_id])
+        end
       end
-      
-      @venue_reference = Invitation.find(params[:invitation]).venue
-      InvitationNotification.create!(actor: current_user, recipient_id: params[:guest], action_id: 4, reference: @venue_reference)
+
+      InvitationNotification.create!(actor: current_user, recipient_id: params[:guest_id], action_id: 4, reference: @invitation.venue)
+
   end
+
 end
