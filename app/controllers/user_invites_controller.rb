@@ -30,4 +30,11 @@ class UserInvitesController < ApplicationController
 
   end
 
+  def update
+      @user_invite = UserInvite.find_by(invitation_id: params[:id], guest: current_user)
+      @user_invite.update(status: params[:status])
+  end
+
+
+
 end
