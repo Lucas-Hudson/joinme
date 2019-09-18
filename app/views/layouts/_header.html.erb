@@ -6,6 +6,17 @@
   </div>
   <div class="col">
     <div class="row h-100 text-center align-items-center justify-content-end">
+
+    <!-- access to admin dashboard if user is admin -->
+    <% if current_user.is_admin? %>
+      <%= link_to admin_root_path do %>
+        <div class="col- my-primary-blue"><%= image_tag "nav-home-on.svg", style: 'width:5.8em; padding-left:4em' %><span
+        style="margin-left:10px">Admin Dashboard</span></div>
+      <% end %>
+    <% end %>
+    <!-- access to admin dashboard if user is admin -->
+
+
       <%= link_to root_path do %>
       <div class="col- my-primary-blue"><%= image_tag "nav-home-on.svg", style: 'width:5.8em; padding-left:4em' %><span
           style="margin-left:10px">Home</span></div>
