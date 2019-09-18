@@ -14,8 +14,8 @@ Rails.application.routes.draw do
   namespace :admin do
     root 'users#index'
     resources :users, except: [:create, :new, :edit]
-    resources :administrators, except: [:create, :new, :edit, :destroy, :show]
-    resources :owners, except: [:create, :new, :edit, :destroy, :show]
+    resources :administrators, except: [:new, :edit, :destroy, :show]
+    resources :owners, except: [:new, :edit, :destroy, :show]
   end
 
 end

@@ -33,6 +33,9 @@
 <tr>
 <td> <a href="<%=admin_user_path(@user.id)%>" data-method="patch">Add <%=@user.first_name%> <%=@user.last_name%> in administrators' list</a> </td>
 </tr>
+<tr>
+<td> <a href="<%=admin_owner_path(@user.id)%>" data-method="patch">Add <%=@user.first_name%> <%=@user.last_name%> in owners' list</a> </td>
+</tr>
 </tbody>
 </main>
 </div>
