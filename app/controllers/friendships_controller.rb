@@ -4,6 +4,11 @@ class FriendshipsController < ApplicationController
     @friends = current_user.friends
     @sent_friend_requests = current_user.sent_friend_requests
     @received_friend_requests = current_user.received_friend_requests
+
+    #On marque la notif comme read si le user arrive sur la show page depuis une notif
+    if params[:notif]
+      FriendshipNotification.find(params[:notif]).update(is_read?: true)
+    end
   end
 
   def create
