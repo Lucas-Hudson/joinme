@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-
-  get 'administrators/index'
-  get 'administrators/update'
-  get 'administrators/destroy'
   root 'venues#index'
   resources :user_invites
   resources :invitations
@@ -17,8 +13,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root 'users#index'
-    resources :users
-    resources :administrators
+    resources :users, except: [:create, :new, :edit]
+    resources :administrators, except: [:create, :new, :edit, :destroy, :show]
+    resources :owners, except: [:create, :new, :edit, :destroy, :show]
   end
 
 end
