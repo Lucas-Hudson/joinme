@@ -32,7 +32,7 @@
                 <%= image_tag "nav-notification-on.svg", style: 'width:5.8em; padding-left:4em' %>
                 <!-- Notification -->
                 <span style="position: absolute; left:5.5em;" class="badge badge-danger">
-                  <% if received_notifications != nil %>
+                  <% if unread_notifications != nil %>
                     <%= unread_notifications.count %>
                   <% else %>
                     0
