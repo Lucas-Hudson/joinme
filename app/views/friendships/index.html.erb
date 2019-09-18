@@ -20,7 +20,7 @@
       <% @received_friend_requests.each do |requesting_friend| %>
       <div class="row align-items-center">
         <div class="col-">
-          <%= image_tag "avatar.jpg", style: "width:4em; border-radius:50%; margin:0.5em" %>
+          <%= image_tag url_for(avatar(requesting_friend)), class:"avatar-xl", style:"margin:0.5em" %><br>
         </div>
         <div class="col">
           <p style="margin:0em"><%= requesting_friend.first_name %> <strong><%= requesting_friend.last_name %></strong></p>
@@ -56,7 +56,7 @@
         <%= link_to user_path(friend), style:"text-decoration:none; color:black" do %>
           <div class="row align-items-center">
             <div class="col-">
-              <%= image_tag "avatar.jpg", style: "width:4em; border-radius:50%; margin:0.5em" %>
+              <%= image_tag url_for(avatar(friend)), class:"avatar-xl", style:"margin:0.5em" %><br>
             </div>
             <div class="col">
               <p style="margin:0em"><%= friend.first_name %> <strong><%= friend.last_name %></strong></p>

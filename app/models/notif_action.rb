@@ -1,0 +1,2 @@
+class NotifAction < ApplicationRecord
+end

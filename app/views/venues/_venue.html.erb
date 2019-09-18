@@ -1,27 +1,28 @@
 <%= link_to venue_path(venue.id), style: "color: black; text-decoration:none" do %>
 
-<div class="container border" style="width:20em; border-radius:1em; box-shadow: 0px 0px 27px rgba(0, 0, 0, 0.2);">
+<div class="container border" style="width:25em; border-radius:1em; box-shadow: 0px 0px 27px rgba(0, 0, 0, 0.2);">
+
   <div class="row">
     <%= video_tag(url_for(venue.video), class: "video-square", poster: url_for(venue.thumbnail), muted: "true", onmouseover:"this.play()", onmouseout:"this.load();") %>
   </div>
-  <div class="row align-items-center">
-    <div class="col- align-items-center">
-      <%= image_tag "avatar.jpg", style: "width:2.5em; border-radius:5em; margin-left:0.4em" %>
+
+  <div class="row align-items-center" style="margin:0.5em 0em">
+    <div class="col- align-items-center" style="margin:0em">
+      <%= image_tag url_for(avatar(venue)), class:"avatar-bg", style:"margin-right:0.5em" %>
     </div>
-    <div class="col text-truncate" style="line-height: 1em; padding:0.5em">
+    <div class="col text-truncate" style="line-height: 1.2em; padding:0.5em">
 
-      <span style="font-weight:600"><%=venue.name%></span><br>
-      <span style="font-size:0.8em; font-weight:400"><%=venue.city%></span><br>
-      <span style="font-size:0.8em">Ouvert jusqu'à 1:00</span>
+      <p class="post-title" style="font-weight:600"><%=venue.name%></p>
+      <small class="post-subtitle"><%=venue.city%></small><br>
+      <small class="post-subtitle">Ouvert jusqu'à 1:00</small>
 
     </div>
-    <div class="col- text-right" style="line-height: 1em; padding:0px; padding-right:0.4em">
+    <div class="col- text-right" style="line-height: 1em; padding:0px; padding-right:0em">
 
-      <span style="font-size:0.6em; font-weight:600">1.2 Km</span><br>
-      <span
-        style="font-weight:600; font-size:0.7em"><%= image_tag "gift.svg", style: "width:1em; margin-bottom:0.4em" %>
+      <span class="post-subtitle" style="font-size:0.8em; font-weight:600">1.2 Km</span><br>
+      <span class="post-subtitle" style="font-weight:600"><%= image_tag "gift.svg", style: "width:1em; margin-bottom:0.4em" %>
         €€</span><br>
-      <span style="font-size:1.2em">
+      <span class="post-subtitle" style="font-size:1.2em">
         <% 5.times do %>
         <%=image_tag "star-on.svg", style: "width:0.7em; margin-left:-0.15em"%>
         <% end %>
@@ -33,38 +34,39 @@
   <hr>
 
   <div class="row">
-    <p style="margin:0px; margin-left:1em; font-size:0.9em; line-height:2.5em">Détendu · Studieux</p>
+    <p class="post-subtitle" style="margin-left:1em; line-height:2.8em">Détendu · Studieux</p>
   </div>
 
   <hr>
 
-  <div class="row align-items-center" style="padding:0.3em 0em">
-    <div class="col-" style="padding-left:0.8em">
-      <%= image_tag "avatar.jpg", style: "width:1.8em; border-radius:2em; margin-right:-0.7em; border: 2px solid white" %>
-      <%= image_tag "avatar.jpg", style: "width:1.8em; border-radius:2em; margin-right:-0.7em; border: 2px solid white" %>
-      <%= image_tag "avatar.jpg", style: "width:1.8em; border-radius:2em; margin-right:-0.7em; border: 2px solid white" %>
-      <%= image_tag "avatar.jpg", style: "width:1.8em; border-radius:2em; margin-right:-0.7em; border: 2px solid white" %>
-      <span class="my-primary-grey text-center"
-        style="width:1.8em; height:1.8em; border-radius:2em; display: inline-block; margin-right:-0.7em; border: 2px solid white; background-color:#A2A1AC">
-        <span style="font-size:0.8em; font-weight:500; color:white; display:absolute; margin-left:-0.2em">+6</span>
-      </span>
+    <div class="row align-items-center" style="padding:0.3em 0.5em">
+      <% venue.participants.last(5).each do |participant| %>
+        <div class="col-">
+          <%= image_tag url_for(avatar(participant)), class:"avatar-sm", style:"margin-right:-0.5em" %>
+        </div>
+      <% end %>
+      <% if venue.participants.count < 5 %>
+        <div class="col">
+          <p class="post-subtitle" style="self-align-center; line-height:2.2em"><%= venue.participants.count %> participants.</p>
+        </div>
+      <% else %>
+      <div class="col">
+        <p class="post-subtitle" style="self-align-center; line-height:2.2em"> et <%= venue.participants.count - 5 %> participants.</p>
+      </div>
+      <% end %>
     </div>
-    <div class="col">
-      <p style="margin:0px; font-size:0.9em; self-align-center">et 104 participants.</p>
-    </div>
-  </div>
-
   <% end %>
   <hr>
 
   <div class="row text-center align-items-center" style="margin:0px; padding:0.5em 0em">
 
     <div class="col">
-      <span>Share</span> <%= image_tag "share-btn.svg", style: "width:1em; margin-bottom:0.2em" %>
+      <%= link_to "Share", new_user_invite_path(venue.id), style:"text-decoration:none; color:black" %>
+      <%= image_tag "share-btn.svg", style: "width:1em; margin:0.6em" %>
     </div>
 
     <div class="col">
-      <%= link_to "Join", venue_invitations_path(venue.id), method: :post %>
+      <%= link_to "Join", venue_invitations_path(venue.id), method: :post, style:"text-decoration:none; color:black" %>
       <%= image_tag "join-btn.svg", style: "width:0.8em; margin-bottom:0.2em" %>
     </div>
 
