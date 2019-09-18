@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   root 'venues#index'
   resources :user_invites
   resources :invitations
@@ -12,7 +13,8 @@ Rails.application.routes.draw do
   resources :friendships
 
   namespace :admin do
-    root 'admin#index'
+    root 'users#index'
+    resources :users
   end
 
 end
