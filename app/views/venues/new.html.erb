@@ -1,57 +1,51 @@
-<div class="container">
+<div style="min-width:100%; min-height:100vh; background-size: cover; background-repeat: no-repeat; background-image: url('https://i.imgur.com/sqLGK55.jpg')">
+    
+    <div class="container" style="width:40%">
 
 
-    <!-- /.col-lg-3 -->
-
-    <div class="row">
+    <div class="row justify-content-center pt-5">
         <%= form_for(@venue, :multipart => true) do |f| %>
-        <div class="col-lg-20 col-md-60 mb-20">
-            <div class="card h-100">
-                <h1>Crée ta Venue ici !</h1>
+        
+        <div class="card justify-content-center h-100 pr-5 pl-5" style= "border-radius: 3em">
+
+            <div class="row justify-content-center pt-5 pb-3">
+                <h1>Crée ta Venue ici</h1><br>
                 <p>Remplis le formulaire ci-dessous</p>
 
                 <div class="col">
                     <%= f.label 'Name' %>
-                    <%= f.text_field 'name'%>
-                    <br /> <br />
+                    <%= f.text_field 'name', class: 'form-control', autofocus: true%>
                 </div>
-                <div class="col">
+                <div class="col text-center">
                     <%= f.label 'description' %>
-                    <%= f.text_field 'description', class: 'form-control', autofocus: true %>
-                    <br /> <br />
+                    <%= f.text_area 'description', class: 'form-control', autofocus: true, :cols => 20, :rows => 6%>
                 </div>
-                <div class="col">
+                <div class="col text-center">
                     <%= f.label 'address' %>
                     <%= f.text_field 'address', class: 'form-control', autofocus: true %>
-                    <br /> <br />
                 </div>
 
                 <div class="col">
                     <%= f.label 'City' %>
                     <%= f.text_field 'city', class: 'form-control', autofocus: true %>
-                    <br /> <br />
                 </div>
-                <div class="form-group">
+                <div class="col form-group text-center">
                     <%= f.label 'zip_code' %>
                     <%= f.number_field 'zip_code', class: 'form-control', autofocus: true %>
-                    <br /> <br />
                 </div>
-                <div class="col">
+                <div class="col text-center">
                     <%= f.label 'min drink price' %>
-                    <%= f.number_field 'min_drink_price', class: 'form-control', autofocus: true %>
-                    <br /> <br />
+                    <%= f.number_field 'min_drink_price',min:0 ,class: 'form-control', autofocus: true%>
                 </div>
-                <div class="form-group">
+                <div class="col form-group text-center">
                     <%= f.label 'video' %>
                     <%= f.file_field 'video' %>
-                    <br /> <br />
                 </div>
-                <div class="form-group">
+                <div class="col form-group text-center">
                     <%= f.label 'thumbnail' %>
                     <%= f.file_field 'thumbnail' %>
-                    <br /> <br />
                 </div>
-                <div class="form-group">
+                <div class="col form-group text-center">
                     <%= f.label 'images' %>
                     <%= f.file_field 'images', multiple: true %>
                     <br /> <br />
