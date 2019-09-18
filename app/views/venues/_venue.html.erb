@@ -45,7 +45,7 @@
           <%= image_tag url_for(avatar(participant)), class:"avatar-sm", style:"margin-right:-0.5em" %>
         </div>
       <% end %>
-      <% if venue.participants.count < 5 %>
+      <% if venue.participants.count < 6 %>
         <div class="col">
           <p class="post-subtitle" style="self-align-center; line-height:2.2em"><%= venue.participants.count %> participants.</p>
         </div>
