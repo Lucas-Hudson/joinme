@@ -7,10 +7,10 @@ class ApplicationController < ActionController::Base
     helper_method :unread_notifications
     helper_method :notification_color
     # Initiates variables before loading page. Otherwise the variable comes back nil...
-    before_action :set_constants
+unless current_user == nil
+before_action :set_constants
 
     def set_constants
-
       @current_events_as_guest = []
       @past_events_as_guest = []
       @events_as_guest = UserInvite.where(guest: current_user)
@@ -24,9 +24,9 @@ class ApplicationController < ActionController::Base
           end
         end
       end
-
     end
 
+end
 
     #Allows us to grab current_user profile pic in all cases (if there is no attached avatars, we display a default avatar)
     def avatar(avatar_holder)
