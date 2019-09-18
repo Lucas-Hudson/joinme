@@ -1,9 +1,32 @@
 class ApplicationController < ActionController::Base
+
     include Devise::Controllers::Helpers  #Nous permet d'accéder depuis le controller aux variables devise (current_user)
     before_action :authenticate_user! #All pages are blocked and only signed in users can access it (except)
     helper_method :avatar
     helper_method :received_notifications
-    helper_method :unread_notifications 
+    helper_method :unread_notifications
+    helper_method :notification_color
+    # Initiates variables before loading page. Otherwise the variable comes back nil...
+    before_action :set_constants
+
+    def set_constants
+
+      @current_events_as_guest = []
+      @past_events_as_guest = []
+      @events_as_guest = UserInvite.where(guest: current_user)
+
+      if @events_as_guest != nil
+        @events_as_guest.each do |user_invite|
+          if user_invite.invitation.start_date == Date.today
+            @current_events_as_guest << user_invite.invitation
+          else
+            @past_events_as_guest << user_invite.invitation
+          end
+        end
+      end
+
+    end
+
 
     #Allows us to grab current_user profile pic in all cases (if there is no attached avatars, we display a default avatar)
     def avatar(avatar_holder)
@@ -31,5 +54,12 @@ class ApplicationController < ActionController::Base
         current_user.unread_friendship_notifications + current_user.unread_invitation_notifications
     end
 
+    def notification_color(notif)
+      if notif.is_read?
+        "white"
+      else
+        "#EFF1F3"
+      end
+    end
 
 end

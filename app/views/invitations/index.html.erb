@@ -5,11 +5,20 @@
     <h2 style="padding-left:2em">Prochains événements</h2><br>
       <% if @current_events_as_admin.count != 0 %>
         <div class="row">
-          <% @current_events_as_admin.each do |current_event| %>
+
+          <% @current_events_as_admin.each do |current_event_as_admin| %>
           <div class="col-6">
-            <%= render 'invitation', invitation: current_event %>
+            <%= render 'invitation', invitation: current_event_as_admin %>
           </div>
           <% end %>
+      <% if @current_events_as_guest != nil %>
+          <% @current_events_as_guest.each do |current_event_as_guest| %>
+          <div class="col-6">
+            <%= render 'invitation', invitation: current_event_as_guest %>
+          </div>
+          <% end %>
+      <% end %>
+
         </div>
       <% else %>
         <div class="row align-items-center" style="padding:2em; height: 20em">
@@ -24,12 +33,12 @@
 
 <br>
 
-<% if @past_events_as_admin.count > 0 %>
+<% if @past_events.count > 0 %>
   <div class="container" style="min-width:60em">
 
     <h2 style="padding-left:2em">Evénements passés</h2><br>
     <div class="row">
-      <% @past_events_as_admin.each do |past_event| %>
+      <% @past_events.each do |past_event| %>
         <div class="col-6">
           <%= render 'invitation', invitation: past_event %>
         </div>

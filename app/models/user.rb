@@ -23,13 +23,12 @@ class User < ApplicationRecord
   has_many :declined_friends, through: :declined_friendships, source: :friend
 
   #invitations
-  has_many :events, class_name: 'UserInvite', foreign_key: :guest_id
-
-  #user_invite
-  has_many :user_invite
   has_many :current_events_as_admin, -> { where(start_date: Date.today) }, class_name: 'Invitation', foreign_key: :admin_id
   has_many :past_events_as_admin, -> { where.not(start_date: Date.today) }, class_name: 'Invitation', foreign_key: :admin_id
-  
+
+  #user_invite
+  has_many :invitations, class_name: 'UserInvite', foreign_key: :guest_id
+
   #notifications
   has_many :friendship_notifications, :dependent => :destroy
   has_many :received_friendship_notifications, class_name: 'FriendshipNotification', foreign_key: :recipient

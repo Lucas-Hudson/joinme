@@ -25,16 +25,14 @@
 
 
 <!-- Bloc Venues -->
-<div class="d-flex" style="margin:auto; width:85%; min-width:80em">
 
-    <div class="row">
+<div class="row" style="margin:auto; width:85%; min-width:80em">
 
 <!-- Afficher toutes les Venues  -->
-      <% @venues.each do |venue|%>
-        <div class="col-4" style="padding-bottom:4em">
-          <%= render 'venue', venue: venue %>
-        </div>
-      <% end %>
-
+  <% @venues.each do |venue|%>
+    <div class="col-4" style="padding-bottom:4em">
+      <%= render 'venue', venue: venue %>
     </div>
+  <% end %>
+
 </div>

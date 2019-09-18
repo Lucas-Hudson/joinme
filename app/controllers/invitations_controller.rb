@@ -1,14 +1,16 @@
 class InvitationsController < ApplicationController
-    before_action
     def index
         @invitations = Invitation.all
         @current_events_as_admin = current_user.current_events_as_admin
         @past_events_as_admin = current_user.past_events_as_admin
         @friends = current_user.friends
 
+        @past_events = @past_events_as_admin + @past_events_as_guest
+
+
      #On marque la notif comme read si le user arrive sur la index page depuis une notif
      if params[:notif]
-        InvitationNotification.find(params[:notif]).update(is_read?: true) 
+        InvitationNotification.find(params[:notif]).update(is_read?: true)
       end
     end
 

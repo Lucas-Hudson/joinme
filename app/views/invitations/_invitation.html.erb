@@ -20,7 +20,14 @@
     <% if invitation.guests.count != 0 %>
     <% invitation.guests.each do |guest| %>
     <div class="col-sm- text-center" style="padding-right:1em">
-      <%= image_tag url_for(avatar(guest)), class:"avatar-bg" %><br>
+      <%= image_tag url_for(avatar(guest)), class:"avatar-bg" %>
+      <% if guest_status(invitation, guest).status == 1 %>
+      <%= image_tag "join-bdg.png", style:"width:1.5em; position:absolute; margin-left:-1em; margin-top:1.7em" %><br>
+      <% elsif guest_status(invitation, guest).status == 2 %>
+      <%= image_tag "cant-bdg.png", style:"width:1.5em; position:absolute; margin-left:-1em; margin-top:1.7em" %><br>
+      <% else %>
+      <br>
+      <% end %>
       <small style="font-size:0.9em"><%= guest.first_name %></small>
     </div>
 
@@ -32,24 +39,46 @@
     <% end %>
   </div>
 
-  <br><hr>
+  <br>
   <% end %>
 
-  <div class="row text-center align-items-center" style="margin:0px; padding:0.7em 0em">
+<% if invitation.start_date == Date.today %>
+<hr>
+    <% if invitation.admin == current_user %>
+      <div class="row text-center align-items-center" style="margin:0px; padding:0.7em 0em">
 
-    <div class="col">
-      <%= link_to invitation_path(invitation), method: "delete", style: "text-decoration:none; color:black" do %>
-      <span>Cancel</span> <%= image_tag "cant-btn.svg", style: "width:0.7em; margin-bottom:0.2em" %>
-      <% end %>
-    </div>
+        <div class="col">
+          <%= link_to invitation_path(invitation), method: "delete", style: "text-decoration:none; color:black" do %>
+          <span>Cancel</span> <%= image_tag "cant-btn.svg", style: "width:0.7em; margin-bottom:0.2em" %>
+          <% end %>
+        </div>
 
-    <div class="col">
-      <%= link_to new_invitation_path(invitation.id), style: "text-decoration:none; color:black" do %>
-      <span>Share</span> <%= image_tag "share-btn.svg", style: "width:1em; margin-bottom:0.2em" %>
-      <% end %>
-    </div>
+        <div class="col">
+          <%= link_to new_invitation_path(invitation.id), style: "text-decoration:none; color:black" do %>
+          <span>Share</span> <%= image_tag "share-btn.svg", style: "width:1em; margin-bottom:0.2em" %>
+          <% end %>
+        </div>
 
-  </div>
+      </div>
+    <% else %>
+
+        <div class="row text-center align-items-center" style="margin:0px; padding:0.7em 0em">
+
+          <div class="col">
+            <%= link_to user_invite_path(invitation.id, status: 2), method: "put", style: "text-decoration:none; color:black" do %>
+            <span>Can't</span> <%= image_tag "cant-btn.svg", style: "width:0.7em; margin-bottom:0.2em" %>
+            <% end %>
+          </div>
+
+          <div class="col">
+            <%= link_to user_invite_path(invitation.id, status: 1), method: "put", style: "text-decoration:none; color:black" do %>
+            <span>Join</span> <%= image_tag "join-btn.svg", style: "width:0.9em; margin-bottom:0.2em" %>
+            <% end %>
+          </div>
+
+        </div>
+    <% end %>
+<% end %>
 
 </div>
 <br><br>
