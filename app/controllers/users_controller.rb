@@ -3,12 +3,11 @@ class UsersController < ApplicationController
     def show
         @user = User.find(params[:id])
         @friends_count = @user.friends.count
-        
+
         #On marque la notif comme read si le user arrive sur la show page depuis une notif
         if params[:notif]
-          FriendshipNotification.find(params[:notif]).update(is_read?: true) 
+          FriendshipNotification.find(params[:notif]).update(is_read?: true)
         end
-
     end
 
   def index
@@ -17,7 +16,7 @@ class UsersController < ApplicationController
     @sent_friend_requests = current_user.sent_friend_requests
   end
 
-    def edit 
+    def edit
       @user = current_user
     end
 

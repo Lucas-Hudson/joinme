@@ -29,7 +29,7 @@ class User < ApplicationRecord
   has_many :user_invite
   has_many :current_events_as_admin, -> { where(start_date: Date.today) }, class_name: 'Invitation', foreign_key: :admin_id
   has_many :past_events_as_admin, -> { where.not(start_date: Date.today) }, class_name: 'Invitation', foreign_key: :admin_id
-  ###########
+  
   #notifications
   has_many :friendship_notifications, :dependent => :destroy
   has_many :received_friendship_notifications, class_name: 'FriendshipNotification', foreign_key: :recipient
