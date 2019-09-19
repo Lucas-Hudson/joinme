@@ -43,14 +43,20 @@
       <p><%= @venue.city %><br>
         Ouvert jusqu’à 01:00
       </p>
-      <a class="btn btn-primary my-primary-gradient" style="border-radius:5em"
-        <%= link_to "STUDIEUX", root_path %></a>
-        <a class="btn btn-primary my-primary-gradient" style="border-radius:5em"
-        <%= link_to "ITALIAN FOOD", root_path %></a>
-        </div>
-        <div class="col">
-        <h5>Description</h5>
-        <p><%= @venue.description %></p>
+      <% @venue.tags.each do |tag| %>
+
+      <a class="btn btn-primary my-primary-gradient" style="border-radius:5em">
+        <%= link_to tag_path(tag.id) do %>
+        <%= tag.tag_content %>
+        <% end%>
+      </a>
+
+
+      <%end%>
+    </div>
+    <div class="col">
+      <h5>Description</h5>
+      <p><%= @venue.description %></p>
     </div>
   </div>
 </div>

@@ -20,7 +20,8 @@
     <div class="col- text-right" style="line-height: 1em; padding:0px; padding-right:0em">
 
       <span class="post-subtitle" style="font-size:0.8em; font-weight:600">1.2 Km</span><br>
-      <span class="post-subtitle" style="font-weight:600"><%= image_tag "gift.svg", style: "width:1em; margin-bottom:0.4em" %>
+      <span class="post-subtitle"
+        style="font-weight:600"><%= image_tag "gift.svg", style: "width:1em; margin-bottom:0.4em" %>
         €€</span><br>
       <span class="post-subtitle" style="font-size:1.2em">
         <% 5.times do %>
@@ -34,27 +35,30 @@
   <hr>
 
   <div class="row">
-    <p class="post-subtitle" style="margin-left:1em; line-height:2.8em">Détendu · Studieux</p>
+    <p class="post-subtitle" style="margin-left:1em; line-height:2.8em"><% venue.tags.each do |tag|%>
+      <%= tag.tag_content%><%end%></p>
   </div>
 
   <hr>
 
-    <div class="row align-items-center" style="padding:0.3em 0.5em">
-      <% venue.participants.last(5).each do |participant| %>
-        <div class="col-">
-          <%= image_tag url_for(avatar(participant)), class:"avatar-sm", style:"margin-right:-0.5em" %>
-        </div>
-      <% end %>
-      <% if venue.participants.count < 6 %>
-        <div class="col">
-          <p class="post-subtitle" style="self-align-center; line-height:2.2em"><%= venue.participants.count %> participants.</p>
-        </div>
-      <% else %>
-      <div class="col">
-        <p class="post-subtitle" style="self-align-center; line-height:2.2em"> et <%= venue.participants.count - 5 %> participants.</p>
-      </div>
-      <% end %>
+  <div class="row align-items-center" style="padding:0.3em 0.5em">
+    <% venue.participants.last(5).each do |participant| %>
+    <div class="col-">
+      <%= image_tag url_for(avatar(participant)), class:"avatar-sm", style:"margin-right:-0.5em" %>
     </div>
+    <% end %>
+    <% if venue.participants.count < 6 %>
+    <div class="col">
+      <p class="post-subtitle" style="self-align-center; line-height:2.2em"><%= venue.participants.count %>
+        participants.</p>
+    </div>
+    <% else %>
+    <div class="col">
+      <p class="post-subtitle" style="self-align-center; line-height:2.2em"> et <%= venue.participants.count - 5 %>
+        participants.</p>
+    </div>
+    <% end %>
+  </div>
   <% end %>
   <hr>
 

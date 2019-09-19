@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :user_invites
   resources :invitations
   devise_for :users
-
+  resources :tags, only: [:show]
   resources :users
   resources :venues do
     resources :invitations, only: [:create]
