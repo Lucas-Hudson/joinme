@@ -1,6 +1,6 @@
 <%= link_to venue_path(invitation.venue.id), style: "color: black; text-decoration:none" do %>
 
-<div class="container border" style="width:25em; border-radius:1em; box-shadow: 0px 0px 27px rgba(0, 0, 0, 0.2);">
+<div class="container border" style="width:25em; border-radius:1em; box-shadow: 0px 0px 27px rgba(0, 0, 0, 0.2)">
 
   <div class="row">
     <%= video_tag(url_for(invitation.venue.video), class: "video-square", poster: url_for(invitation.venue.thumbnail), muted: "true", onmouseover:"this.play()", onmouseout:"this.load();") %>
@@ -14,21 +14,26 @@
       <p style="font-weight:600; line-height:0em"><%= invitation.admin.first_name %></p><br>
       <small style=" font-weight:400"><%= invitation.guests.count %> invités.</small><br>
     </div>
+    <div class="col-" style="margin:1em; margin-top:-1em">
+      <% unless invitation.start_date == Date.today %>
+      <small style="font-size:0.8em"> <%= invitation.start_date.strftime("%d/%m") %> </small>
+      <% end %>
+    </div>
   </div>
 
   <div class="row align-items-center" style="margin-left:0.3em; padding-top:1em">
     <% if invitation.guests.count != 0 %>
-    <% invitation.guests.each do |guest| %>
+    <% invitation.user_invites.each do |user_invite| %>
     <div class="col-sm- text-center" style="padding-right:1em">
-      <%= image_tag url_for(avatar(guest)), class:"avatar-bg" %>
-      <% if guest_status(invitation, guest).status == 1 %>
+      <%= image_tag url_for(avatar(user_invite.guest)), class:"avatar-bg" %>
+      <% if user_invite.accepted? %>
       <%= image_tag "join-bdg.png", style:"width:1.5em; position:absolute; margin-left:-1em; margin-top:1.7em" %><br>
-      <% elsif guest_status(invitation, guest).status == 2 %>
+      <% elsif user_invite.denied? %>
       <%= image_tag "cant-bdg.png", style:"width:1.5em; position:absolute; margin-left:-1em; margin-top:1.7em" %><br>
       <% else %>
       <br>
       <% end %>
-      <small style="font-size:0.9em"><%= guest.first_name %></small>
+      <small style="font-size:0.9em"><%= user_invite.guest.first_name %></small>
     </div>
 
     <% end %>

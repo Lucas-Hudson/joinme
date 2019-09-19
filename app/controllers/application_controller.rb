@@ -10,22 +10,16 @@ class ApplicationController < ActionController::Base
     before_action :set_constants
 
     def set_constants
+      if user_signed_in?
+        @current_events_as_admin = current_user.events.current
+        @current_events_as_guest = current_user.invitations.current
 
-      @current_events_as_guest = []
-      @past_events_as_guest = []
-      @events_as_guest = UserInvite.where(guest: current_user)
+        @past_events_as_admin = current_user.events.past
+        @past_events_as_guest = current_user.invitations.past
 
-      if @events_as_guest != nil
-
-        @events_as_guest.each do |user_invite|
-          if user_invite.invitation.start_date == Date.today
-            @current_events_as_guest << user_invite.invitation
-          else
-            @past_events_as_guest << user_invite.invitation
-          end
-        end
+        @current_event_count = @current_events_as_admin.count + @current_events_as_guest.count
+        @past_events = @past_events_as_admin + @past_events_as_guest
       end
-      
     end
 
     #Allows us to grab current_user profile pic in all cases (if there is no attached avatars, we display a default avatar)
