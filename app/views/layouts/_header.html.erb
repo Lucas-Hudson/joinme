@@ -1,15 +1,15 @@
-<div class="row w-100 align-items-center" style=" min-width:50em">
+<div class="row w-100 align-items-center" style="min-width:70em">
   <div id="hide" class="col- pr-4">
     <%= link_to root_path do %>
     <%= image_tag "logo.png", style: 'width:8em; margin:0.6em; margin-left:2em' %>
     <% end %>
   </div>
-  
+
     <!-- access to admin dashboard if user is admin -->
 <% if current_user.is_admin? %>
   <%= link_to "Admin Dashboard", admin_root_path, class: "col- btn btn-outline-primary"%>
 <% end %>
- 
+
 <% if current_user.is_owner? || current_user.is_admin? %>
  <%= link_to "Créer Venue", new_venue_path, class: "col- btn btn-outline-primary ml-3" %>
 <% end %>
@@ -19,18 +19,28 @@
     <div class="row h-100 text-center align-items-center justify-content-end">
 
       <%= link_to root_path do %>
-      <div class="col- my-primary-blue"><%= image_tag "nav-home-on.svg", style: 'width:5.8em; padding-left:4em' %><span
-          style="margin-left:10px">Home</span></div>
+        <% if current_page?(controller: 'venues', action: 'index') %>
+          <div class="col- my-primary-blue"><%= image_tag "nav-home-on.svg", style: 'width:5.8em; padding-left:4em' %><span style="margin-left:10px">Home</span></div>
+        <% else %>
+          <div class="col- my-primary-grey"><%= image_tag "nav-home-off.svg", style: 'width:5.8em; padding-left:4em' %><span style="margin-left:10px">Home</span></div>
+        <% end %>
+
       <% end %>
 
       <%= link_to invitations_path do %>
-      <div class="col- my-primary-grey">
-        <%= image_tag "nav-inbox-off.svg", style: 'width:5.8em; padding-left:4em' %>
-        <% if current_user.current_events_as_admin != nil || @current_events_as_guest != nil %>
-          <span style="position: absolute; margin-left:-1.2em;" class="badge badge-danger"><%= current_user.current_events_as_admin.count + @current_events_as_guest.count %></span>
+        <% if current_page?(controller: 'invitations', action: 'index') %>
+          <div class="col- my-primary-blue">
+            <%= image_tag "nav-inbox-on.svg", style: 'width:5.8em; padding-left:4em' %>
+              <span style="position: absolute; margin-left:-1.2em;" class="badge badge-danger"><%= @current_event_count %></span>
+            <span style="margin-left:10px">Inbox</span>
+          </div>
+        <% else %>
+          <div class="col- my-primary-grey">
+            <%= image_tag "nav-inbox-off.svg", style: 'width:5.8em; padding-left:4em' %>
+              <span style="position: absolute; margin-left:-1.2em;" class="badge badge-danger"><%= @current_event_count %></span>
+            <span style="margin-left:10px">Inbox</span>
+          </div>
         <% end %>
-        <span style="margin-left:10px">Inbox</span>
-      </div>
       <% end %>
 
       <!-- Notification with dropdown ------------------------------------ -->
@@ -45,15 +55,15 @@
               <!-- Img column -->
               <div class="col-">
                 <!-- Img -->
-                <%= image_tag "nav-notification-on.svg", style: 'width:5.8em; padding-left:4em' %>
-                <!-- Notification -->
-                <span style="position: absolute; left:5.5em;" class="badge badge-danger">
-                  <% if unread_notifications != nil %>
-                    <%= unread_notifications.count %>
-                  <% else %>
-                    0
-                  <% end %>
-                </span>
+                <% if unread_notifications.count > 0 %>
+                  <%= image_tag "nav-notification-on.svg", style: 'width:5.8em; padding-left:4em' %>
+                  <!-- Notification -->
+                  <span style="position: absolute; left:5.5em;" class="badge badge-danger">
+                      <%= unread_notifications.count %>
+                  </span>
+                <% else %>
+                  <%= image_tag "nav-notification-off.svg", style: 'width:5.8em; padding-left:4em' %>
+                <% end %>
               </div>
               <!-- Text column -->
               <div class="col-">
@@ -65,13 +75,14 @@
           <div class="dropdown-menu dropdown-menu-right scrollable-menu" aria-labelledby="navbarDropdown"
             style="width:30em">
 
-            <% if received_notifications != nil %>
-              <% received_notifications.each do |notif| %>
+            <% if received_notifications != 0 %>
+              <% received_notifications.last(10).each do |notif| %>
                 <%= render 'layouts/notification', notif: notif %>
               <% end %>
-              <div class="text-center" style="margin-top:0.4em">
-                <a href="#">More</a>
-              </div>
+            <% else %>
+            <div class="text-center my-primary-grey">
+              <small>No Notifications</small>
+            </div>
             <% end %>
 
           </div>
@@ -90,11 +101,19 @@
               <!-- Img column -->
               <div class="col-">
                 <!-- Img -->
-                <%= image_tag "nav-profile-off.svg", style: 'width:5.8em; padding-left:4em' %>
+                <% if current_page?(user_path(current_user)) %>
+                  <%= image_tag "nav-profile-on.svg", style: 'width:5.8em; padding-left:4em' %>
+                <% else %>
+                  <%= image_tag "nav-profile-off.svg", style: 'width:5.8em; padding-left:4em' %>
+                <% end %>
               </div>
               <!-- Text column -->
               <div class="col-">
-                <span class="nav-link dropdown-toggle">Profile</span>
+                <% if current_page?(user_path(current_user)) %>
+                  <span class="nav-link dropdown-toggle my-primary-blue">Profile</span>
+                <% else %>
+                  <span class="nav-link dropdown-toggle">Profile</span>
+                <% end %>
               </div>
             </div>
           </div>
