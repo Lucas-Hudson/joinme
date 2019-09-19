@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_17_110145) do
+ActiveRecord::Schema.define(version: 2019_09_17_162651) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,8 +81,23 @@ ActiveRecord::Schema.define(version: 2019_09_17_110145) do
     t.index ["venue_id"], name: "index_invitations_on_venue_id"
   end
 
+  create_table "join_tag_venues", force: :cascade do |t|
+    t.bigint "tag_id"
+    t.bigint "venue_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tag_id"], name: "index_join_tag_venues_on_tag_id"
+    t.index ["venue_id"], name: "index_join_tag_venues_on_venue_id"
+  end
+
   create_table "notif_actions", force: :cascade do |t|
     t.string "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "tag_content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
