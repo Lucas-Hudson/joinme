@@ -1,5 +1,5 @@
 <!-- Image bannière -->
-<div style="min-width:100%; height:16vh; background-size: cover; background-repeat: no-repeat; background-image: url('https://joinme-thp.s3-eu-west-1.amazonaws.com/home-banner-text.jpg')"></div>
+<div style="min-width:100%; height:16vh; background-size: cover; background-repeat: no-repeat; position: relative; background-image: url('https://i.imgur.com/pwT4hsx.jpg')"><h1 style="font-size:4em; font-weight:800; color:#26e3c9; position: absolute; top:25%; left:25%;">Trouvez Votre Ambiance</h1></div>
 
     <% if @venues == nil %>
 <!-- Si aucun Venue, afficher "Pas de Venues créés...", sinon afficher "Ambiances Live" -->
@@ -34,5 +34,6 @@
       <%= render 'venue', venue: venue %>
     </div>
   <% end %>
-
 </div>
+
+
