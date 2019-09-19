@@ -16,12 +16,12 @@ puts "Old data deleted"
 User.create(email: "lucashudson.contact@gmail.com", first_name: "Lucas", last_name: "Hudson", is_owner?: true, is_admin?: true, password: "mlucas", password_confirmation: "mlucas")
 User.last.avatar.attach(io: File.open("#{path}0.1-avatar-lucas.jpg"), filename: "0.1-avatar-lucas.jpg", content_type: "image/jpg")
 # Ali
-User.create(email: "ali@ali.fr", first_name: "Ali", last_name: "Youssef", password: "123456", is_owner?: true, is_admin?: true, password_confirmation: "123456")
+User.create(email: "ali@ali.fr", first_name: "Ali", last_name: "Youssef", password: "aliali", is_owner?: true, is_admin?: true, password_confirmation: "aliali")
 User.last.avatar.attach(io: File.open("#{path}0.2-avatar-ali.jpg"), filename: "0.2-avatar-ali.jpg", content_type: "image/jpg")
 # Gregoire
 User.create(email: "gregoire@gmail.com", first_name: "Grégoire", last_name: "Kelesoglu", is_owner?: true, is_admin?: true, password: "123456", password_confirmation: "123456")
 # Lu
-User.create(email: "lujiaying7@gmail.com", first_name: "Lu", last_name: "Jiaying", is_owner?: true, is_admin?: true, password: "123456", password_confirmation: "123456")
+User.create(email: "lu@gmail.com", first_name: "Lu", last_name: "Jiaying", is_owner?: true, is_admin?: true, password: "123456", password_confirmation: "123456")
 User.last.avatar.attach(io: File.open("#{path}0.4-avatar-lu.jpg"), filename: "0.4-avatar-lu.jpg", content_type: "image/jpg")
 
 puts "Created 4 Team Accounts with owner and admin priviledges."
@@ -116,3 +116,11 @@ NotifAction.create(content: "participe à")
 NotifAction.create(content: "ne participe pas à")
 
 puts "Created Notification Actions."
+
+Tag.create(tag_content: "Détendu")
+Tag.create(tag_content: "Rock")
+Tag.create(tag_content: "Jazz")
+Tag.create(tag_content: "Clubbing")
+Tag.create(tag_content: "Ephémère")
+
+puts "created 5 first tags"

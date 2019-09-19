@@ -1,21 +1,22 @@
-<div class="row w-100" style=" min-width:50em">
-  <div id="hide" class="col-2">
+<div class="row w-100 align-items-center" style=" min-width:50em">
+  <div id="hide" class="col- pr-4">
     <%= link_to root_path do %>
     <%= image_tag "logo.png", style: 'width:8em; margin:0.6em; margin-left:2em' %>
     <% end %>
   </div>
+  
+    <!-- access to admin dashboard if user is admin -->
+<% if current_user.is_admin? %>
+  <%= link_to "Admin Dashboard", admin_root_path, class: "col- btn btn-outline-primary"%>
+<% end %>
+ 
+<% if current_user.is_owner? || current_user.is_admin? %>
+ <%= link_to "Créer Venue", new_venue_path, class: "col- btn btn-outline-primary ml-3" %>
+<% end %>
+ <!-- access to admin dashboard if user is admin -->
+
   <div class="col">
     <div class="row h-100 text-center align-items-center justify-content-end">
-
-    <!-- access to admin dashboard if user is admin -->
-    <% if current_user.is_admin? %>
-      <%= link_to admin_root_path do %>
-        <div class="col- my-primary-blue"><%= image_tag "nav-home-on.svg", style: 'width:5.8em; padding-left:4em' %><span
-        style="margin-left:10px">Admin Dashboard</span></div>
-      <% end %>
-    <% end %>
-    <!-- access to admin dashboard if user is admin -->
-
 
       <%= link_to root_path do %>
       <div class="col- my-primary-blue"><%= image_tag "nav-home-on.svg", style: 'width:5.8em; padding-left:4em' %><span

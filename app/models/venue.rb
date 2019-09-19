@@ -10,4 +10,6 @@ class Venue < ApplicationRecord
     has_many :events, -> { where(start_date: Date.today) }, class_name: 'Invitation', foreign_key: :venue_id
     has_many :participants, through: :events, source: :guests
 
+    has_many :join_tag_venues
+    has_many :tags, through: :join_tag_venues
 end
