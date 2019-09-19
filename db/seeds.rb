@@ -21,7 +21,7 @@ User.last.avatar.attach(io: File.open("#{path}0.2-avatar-ali.jpg"), filename: "0
 # Gregoire
 User.create(email: "gregoire@gmail.com", first_name: "Grégoire", last_name: "Kelesoglu", is_owner?: true, is_admin?: true, password: "123456", password_confirmation: "123456")
 # Lu
-User.create(email: "lujiaying7@gmail.com", first_name: "Lu", last_name: "Jiaying", is_owner?: true, is_admin?: true, password: "123456", password_confirmation: "123456")
+User.create(email: "lu@gmail.com", first_name: "Lu", last_name: "Jiaying", is_owner?: true, is_admin?: true, password: "123456", password_confirmation: "123456")
 User.last.avatar.attach(io: File.open("#{path}0.4-avatar-lu.jpg"), filename: "0.4-avatar-lu.jpg", content_type: "image/jpg")
 
 puts "Created 4 Team Accounts with owner and admin priviledges."
