@@ -6,7 +6,8 @@
 ############################################################
 
 # Lucas
-path = "/Users/lucashudson/desktop/joinme-seed/"
+#path = "/Users/lucashudson/desktop/joinme-seed/"
+path = Rails.root.join("joinme-seed/")
 
 # Ali
 #path =
