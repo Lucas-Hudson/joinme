@@ -17,5 +17,4 @@ Rails.application.routes.draw do
     resources :administrators, except: [:new, :edit, :destroy, :show]
     resources :owners, except: [:new, :edit, :destroy, :show]
   end
-
 end
