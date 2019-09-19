@@ -11,4 +11,11 @@ Rails.application.routes.draw do
 
   resources :friendships
 
+  namespace :admin do
+    root 'users#index'
+    resources :users, except: [:create, :new, :edit]
+    resources :administrators, except: [:new, :edit, :destroy, :show]
+    resources :owners, except: [:new, :edit, :destroy, :show]
+  end
+
 end
