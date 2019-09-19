@@ -1,116 +1,140 @@
+<div class="my-bg-grey">
+
 <br><br>
+
 <div class="container" style="width:65%">
-<div class="row">
-<div class="col-4">
-<%= image_tag url_for(avatar(@user)), style: "width:100%; border-radius:1em; height:auto; object-fit:cover;" %>
-</div>
-
-<div class="col" >
-<h4 style="font-weight:600; padding-top: 0.8em">
-<%= @user.first_name%> <%= @user.last_name%></h4>
-<small style="font-weight:600">Explorateur</small><br>
-<small style="font-weight:600">5 000 points</small>
-
-<div class="row" style="padding-top:1em">
-<div class="col">
-<%= link_to friendships_path, class:"text-decoration-none" do %>
-<p style="font-weight:600; color:black; margin:0em"><%= @friends_count%></p>
-<small style="font-weight:600; color:black; margin:0em">Amis</small>
-<% end %>
-</div>
-<div class="col">
-<p style="font-weight:600; margin:0em">576</p>
-<small style="font-weight:600; margin:0em">Events</small>
-</div>
-<div class="col">
-<p style="font-weight:600; margin:0em">14</p>
-<small style="font-weight:600; margin:0em">Lives</small>
-</div>
-</div>
-</div>
-<div class="col-">
-<%= link_to edit_user_path(current_user) do %>
-<%= image_tag "settings.svg", style: "width:1em" %>
-<% end %>
-</div>
-</div>
-</div>
 
 
-<% if current_user.is_owner? %>
-<div class="container">
+
+  <div class="row">
+    <div class="col-4">
+      <%= image_tag url_for(avatar(@user)), style: "width:17em; border-radius:1em; height:auto; object-fit:cover;" %>
+    </div>
+
+    <div class="col" >
+
+      <div class="row">
+        <h4 style="font-weight:600; padding-top: 0.8em">
+          <%= @user.first_name%> <%= @user.last_name%>
+        </h4>
+      </div>
+
+      <div class="row">
+        <small style="font-weight:600">Explorateur</small><br>
+      </div>
+
+      <div class="row">
+        <small style="font-weight:600">5 000 points</small>
+      </div>
+
+
+
+      <div class="row align-items-end" style="padding-top:6em">
+        <div class="col">
+          <%= link_to friendships_path, class:"text-decoration-none" do %>
+            <p style="font-weight:600; color:black; margin:0em"><%= @friends_count%></p>
+            <small style="font-weight:600; color:black; margin:0em">Amis</small>
+          <% end %>
+        </div>
+
+        <div class="col">
+          <p style="font-weight:600; margin:0em"><%= @user.invitations.count + @user.events.count %></p>
+          <small style="font-weight:600; margin:0em">Events</small>
+        </div>
+
+        <div class="col">
+          <p style="font-weight:600; margin:0em">14</p>
+          <small style="font-weight:600; margin:0em">Lives</small>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col-">
+      <%= link_to edit_user_path(current_user) do %>
+        <%= image_tag "settings.svg", style: "width:1em" %>
+      <% end %>
+    </div>
+
+  </div>
+
+</div>
+
 <br><br>
-<div class="row text-center">
-<div class="col">
-<%= link_to "Créer Venue", new_venue_path, class: "btn btn-primary" %>
-</div>
-</div>
-</div>
-<% end %>
 
+</div>
 
+<br><br>
 
-<div class="container mt-5" style="width:65%">
-<div class="row " style="height:250px">
-<div class="col-3">
-<h5>Anciens Lives</h5>
-<%= link_to 'Voir tous lives', users_path, class:"btn btn-outline-primary" %>
+<div class="container" style="width:65%">
+  <div class="row " style="height:250px">
+    <div class="col-3">
+      <h5>Mes Lives</h5>
+      <%= link_to 'Voir tous lives', users_path, class:"btn btn-outline-primary" %>
+    </div>
+    <div class="col">
+      <div class="card live_card border-0 shadow-sm">
+      <img class="card-img-top img-fluid" src="https://i.imgur.com/D7mEBf9.jpg" alt="Card image cap">
+      </div>
+    </div>
+    <div class="col ">
+      <div class="card live_card border-0 shadow-sm">
+        <img class="card-img-top" src="https://i.imgur.com/aoyz0mO.jpg" alt="Card image cap ">
+      </div>
+    </div>
+    <div class="col">
+      <div class="card live_card border-0 shadow-sm">
+        <img class="card-img-top" src="https://i.imgur.com/lGj06Gf.jpg" alt="Card image cap ">
+      </div>
+    </div>
+  </div>
 </div>
-<div class="col">
-<div class="card live_card border-0 shadow-sm">
-<img class="card-img-top img-fluid" src="https://i.imgur.com/D7mEBf9.jpg" alt="Card image cap">
-</div>
-</div>
-<div class="col ">
-<div class="card live_card border-0 shadow-sm">
-<img class="card-img-top" src="https://i.imgur.com/aoyz0mO.jpg" alt="Card image cap ">
-</div>
-</div>
-<div class="col">
-<div class="card live_card border-0 shadow-sm">
-<img class="card-img-top" src="https://i.imgur.com/lGj06Gf.jpg" alt="Card image cap ">
-</div>
-</div>
-</div>
-</div>
-<div class="container mt-5 pt-4 mb-5" style="width:65%">
+
+<br><br><br><br><br><br><br>
+
+<div class="container" style="width:65%">
 <div class="row align-items-top">
-<div class="col-3">
-<h5>Autre Profils</h5>
-<%= link_to 'Trouver des Amis', users_path, class:"btn btn-outline-primary" %></label>
+  <div class="col-3">
+    <h5>Autre Profils</h5>
+    <%= link_to 'Trouver des Amis', users_path, class:"btn btn-outline-primary" %>
+  </div>
+
+  <div class="col">
+    <div class="card border-0 shadow-sm">
+      <img class="card-img-top" src="https://i.imgur.com/ruZ36VN.jpg" alt="Card image cap">
+    <div class="card-body">
+      <h6 class="card-title ml-n3">Karlie Kloss</h6>
+      <sm class="card-text ml-n3">Ambassadeur</sm>
+      <sm class="row mt-2 justify-content-center text-secondary">76 Lives</sm>
+    </div>
+    </div>
+  </div>
+
+  <div class="col ">
+    <div class="card border-0 shadow-sm">
+      <img class="card-img-top" src="https://i.imgur.com/ruZ36VN.jpg" alt="Card image cap">
+    <div class="card-body">
+      <h6 class="card-title ml-n3">Ya Chin-Ho</h6>
+      <sm class="card-text ml-n3">Ambassadeur</sm>
+      <sm class="row mt-2 justify-content-center text-secondary">76 Lives</sm>
+    </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="card border-0 shadow-sm">
+      <img class="card-img-top" src="https://i.imgur.com/ruZ36VN.jpg" alt="Card image cap">
+    <div class="card-body">
+      <h6 class="card-title ml-n3">Suhaib Al Mihas</h6>
+      <sm class="card-text ml-n3"> Explorateur </sm>
+      <sm class="row mt-2 justify-content-center text-secondary">76 Lives</sm>
+    </div>
+    </div>
+  </div>
 </div>
-<div class="col">
-<div class="card border-0 shadow-sm">
-<img class="card-img-top" src="https://i.imgur.com/ruZ36VN.jpg" alt="Card image cap">
-<div class="card-body">
-<h6 class="card-title ml-n3">Karlie Kloss</h6>
-<sm class="card-text ml-n3">Ambassadeur</sm>
-<sm class="row mt-2 justify-content-center text-secondary">76Lives</sm>
 </div>
-</div>
-</div>
-<div class="col ">
-<div class="card border-0 shadow-sm">
-<img class="card-img-top" src="https://i.imgur.com/ruZ36VN.jpg" alt="Card image cap">
-<div class="card-body">
-<h6 class="card-title ml-n3">Ya Chin-Ho</h6>
-<sm class="card-text ml-n3">Ambassadeur</sm>
-<sm class="row mt-2 justify-content-center text-secondary">76Lives</sm>
-</div>
-</div>
-</div>
-<div class="col">
-<div class="card border-0 shadow-sm">
-<img class="card-img-top" src="https://i.imgur.com/ruZ36VN.jpg" alt="Card image cap">
-<div class="card-body">
-<h6 class="card-title ml-n3">Suhaib Al Mihas</h6>
-<sm class="card-text ml-n3"> Explorateur </sm>
-<sm class="row mt-2 justify-content-center text-secondary">76Lives</sm>
-</div>
-</div>
-</div>
-</div>
-</div>
+
+
 <style>
 
   
