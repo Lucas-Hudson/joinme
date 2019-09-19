@@ -1,15 +1,15 @@
-<div class="row w-100 align-items-center" style=" min-width:50em">
+<div class="row w-100 align-items-center" style=" min-width:70em">
   <div id="hide" class="col- pr-4">
     <%= link_to root_path do %>
     <%= image_tag "logo.png", style: 'width:8em; margin:0.6em; margin-left:2em' %>
     <% end %>
   </div>
-  
+
     <!-- access to admin dashboard if user is admin -->
 <% if current_user.is_admin? %>
   <%= link_to "Admin Dashboard", admin_root_path, class: "col- btn btn-outline-primary"%>
 <% end %>
- 
+
 <% if current_user.is_owner? || current_user.is_admin? %>
  <%= link_to "Créer Venue", new_venue_path, class: "col- btn btn-outline-primary ml-3" %>
 <% end %>
@@ -26,9 +26,7 @@
       <%= link_to invitations_path do %>
       <div class="col- my-primary-grey">
         <%= image_tag "nav-inbox-off.svg", style: 'width:5.8em; padding-left:4em' %>
-        <% if current_user.current_events_as_admin != nil || @current_events_as_guest != nil %>
-          <span style="position: absolute; margin-left:-1.2em;" class="badge badge-danger"><%= current_user.current_events_as_admin.count + @current_events_as_guest.count %></span>
-        <% end %>
+          <span style="position: absolute; margin-left:-1.2em;" class="badge badge-danger"><%= @current_event_count %></span>
         <span style="margin-left:10px">Inbox</span>
       </div>
       <% end %>
