@@ -22,22 +22,24 @@ path = "/Users/lucashudson/desktop/joinme-seed/"
 
 User.destroy_all
 Venue.destroy_all
-# Friendship.destroy_all
-# Invitation.destroy_all
-# UserInvite.destroy_all
+Friendship.destroy_all
+Invitation.destroy_all
+UserInvite.destroy_all
 NotifAction.destroy_all
 
 puts "Old data deleted"
 
 # Lucas
 User.create(email: "lucashudson.contact@gmail.com", first_name: "Lucas", last_name: "Hudson", is_owner?: true, is_admin?: true, password: "mlucas", password_confirmation: "mlucas")
-User.last.avatar.attach(io: File.open('/Users/lucashudson/desktop/avatar.jpg'), filename: 'avatar.jpg', content_type: 'image/png')
+User.last.avatar.attach(io: File.open("#{path}0.1-avatar-lucas.jpg"), filename: "0.1-avatar-lucas.jpg", content_type: "image/jpg")
 # Ali
 User.create(email: "ali@ali.fr", first_name: "Ali", last_name: "Youssef", password: "123456", is_owner?: true, is_admin?: true, password_confirmation: "123456")
+User.last.avatar.attach(io: File.open("#{path}0.2-avatar-ali.jpg"), filename: "0.2-avatar-ali.jpg", content_type: "image/jpg")
 # Gregoire
 User.create(email: "gregoire@gmail.com", first_name: "Grégoire", last_name: "Kelesoglu", is_owner?: true, is_admin?: true, password: "123456", password_confirmation: "123456")
 # Lu
 User.create(email: "lujiaying7@gmail.com", first_name: "Lu", last_name: "Jiaying", is_owner?: true, is_admin?: true, password: "123456", password_confirmation: "123456")
+User.last.avatar.attach(io: File.open("#{path}0.4-avatar-lu.jpg"), filename: "0.4-avatar-lu.jpg", content_type: "image/jpg")
 
 puts "Created 4 Team Accounts with owner and admin priviledges."
 
@@ -104,11 +106,11 @@ end
 
 puts "Created 10 fake users."
 
-20.times do
+30.times do
   Friendship.create(user: User.all.sample, friend: User.all.sample)
 end
 
-puts "Created 20 fake pending friendships."
+puts "Created 30 fake pending friendships."
 
 10.times do
   Invitation.create(admin: User.all.sample, venue: Venue.all.sample, start_date: Faker::Time.between(from: DateTime.now - 10, to: DateTime.now))
