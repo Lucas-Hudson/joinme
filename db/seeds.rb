@@ -16,7 +16,7 @@ puts "Old data deleted"
 User.create(email: "lucashudson.contact@gmail.com", first_name: "Lucas", last_name: "Hudson", is_owner?: true, is_admin?: true, password: "mlucas", password_confirmation: "mlucas")
 User.last.avatar.attach(io: File.open("#{path}0.1-avatar-lucas.jpg"), filename: "0.1-avatar-lucas.jpg", content_type: "image/jpg")
 # Ali
-User.create(email: "ali@ali.fr", first_name: "Ali", last_name: "Youssef", password: "123456", is_owner?: true, is_admin?: true, password_confirmation: "123456")
+User.create(email: "ali@ali.fr", first_name: "Ali", last_name: "Youssef", password: "aliali", is_owner?: true, is_admin?: true, password_confirmation: "aliali")
 User.last.avatar.attach(io: File.open("#{path}0.2-avatar-ali.jpg"), filename: "0.2-avatar-ali.jpg", content_type: "image/jpg")
 # Gregoire
 User.create(email: "gregoire@gmail.com", first_name: "Grégoire", last_name: "Kelesoglu", is_owner?: true, is_admin?: true, password: "123456", password_confirmation: "123456")
