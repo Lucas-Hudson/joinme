@@ -116,3 +116,11 @@ NotifAction.create(content: "participe à")
 NotifAction.create(content: "ne participe pas à")
 
 puts "Created Notification Actions."
+
+Tag.create(tag_content: "Détendu")
+Tag.create(tag_content: "Rock")
+Tag.create(tag_content: "Jazz")
+Tag.create(tag_content: "Clubbing")
+Tag.create(tag_content: "Ephémère")
+
+puts "created 5 first tags"
