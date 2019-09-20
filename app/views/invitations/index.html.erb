@@ -3,6 +3,7 @@
       <br>
 
       <h2 style="padding-left:2em">Prochains événements</h2><br>
+        <% if @current_events_as_admin.count > 0 %>
           <div class="row">
 
             <% @current_events_as_admin.each do |current_event_as_admin| %>
@@ -24,6 +25,7 @@
               <small><%= link_to "Voir les Venues", venues_path %></small>
             </div>
           </div>
+        <% end %>
       </div>
   </div>
 
