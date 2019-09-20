@@ -32,7 +32,7 @@ class UserInvitesController < ApplicationController
   def update
     @user_invite = UserInvite.find_by(invitation_id: params[:id], guest: current_user)
     @invitation = @user_invite.invitation
-    @user_invite.update(status: params[:status])
+    @user_invite.update(status: params[:status].to_i)
     if params[:status] == 1
       InvitationNotification.create!(actor: current_user, recipient: @invitation.admin, action_id: 4, reference: @invitation.venue)
     elsif params[:status] == 2
