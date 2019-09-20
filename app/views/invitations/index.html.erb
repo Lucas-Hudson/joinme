@@ -1,49 +1,50 @@
-<div class="my-bg-grey">
-    <div class="container" style="min-width:60em">
-    <br>
 
-    <h2 style="padding-left:2em">Prochains événements</h2><br>
-      <% if @current_events_as_admin.count != 0 %>
-        <div class="row">
+  <div class="my-bg-grey">
+      <div class="container" style="min-width:60em">
+      <br>
 
-          <% @current_events_as_admin.each do |current_event_as_admin| %>
-          <div class="col-6">
-            <%= render 'invitation', invitation: current_event_as_admin %>
+      <h2 style="padding-left:2em">Prochains événements</h2><br>
+        <% if @current_events_as_admin.count != 0 %>
+          <div class="row">
+
+            <% @current_events_as_admin.each do |current_event_as_admin| %>
+            <div class="col-6">
+              <%= render 'invitation', invitation: current_event_as_admin %>
+            </div>
+            <% end %>
+        <% if @current_events_as_guest != nil %>
+            <% @current_events_as_guest.each do |current_event_as_guest| %>
+            <div class="col-6">
+              <%= render 'invitation', invitation: current_event_as_guest %>
+            </div>
+            <% end %>
+        <% end %>
+
           </div>
-          <% end %>
-      <% if @current_events_as_guest != nil %>
-          <% @current_events_as_guest.each do |current_event_as_guest| %>
-          <div class="col-6">
-            <%= render 'invitation', invitation: current_event_as_guest %>
+        <% else %>
+          <div class="row align-items-center" style="padding:2em; height: 20em">
+            <div class="col text-center" style="color:grey">
+              <h3>Pas d'événements prévus</h3>
+              <small><%= link_to "Voir les Venues", venues_path %></small>
+            </div>
           </div>
-          <% end %>
-      <% end %>
-
-        </div>
-      <% else %>
-        <div class="row align-items-center" style="padding:2em; height: 20em">
-          <div class="col text-center" style="color:grey">
-            <h3>Pas d'événements prévus</h3>
-            <small><%= link_to "Voir les Venues", venues_path %></small>
-          </div>
-        </div>
-      <% end %>
-    </div>
-</div>
-
-<br>
-
-<% if @past_events.count > 0 %>
-  <div class="container" style="min-width:60em">
-
-    <h2 style="padding-left:2em">Evénements passés</h2><br>
-    <div class="row">
-      <% @past_events.sort_by{ |event| event.start_date}.reverse.each do |past_event| %>
-        <div class="col-6">
-          <%= render 'invitation', invitation: past_event %>
-        </div>
-      <% end %>
-    </div>
-
+        <% end %>
+      </div>
   </div>
-<% end %>
+
+  <br>
+
+  <% if @past_events.count > 0 %>
+    <div class="container" style="min-width:60em">
+
+      <h2 style="padding-left:2em">Evénements passés</h2><br>
+      <div class="row">
+        <% @past_events.sort_by{ |event| event.start_date}.reverse.each do |past_event| %>
+          <div class="col-6">
+            <%= render 'invitation', invitation: past_event %>
+          </div>
+        <% end %>
+      </div>
+
+    </div>
+  <% end %>

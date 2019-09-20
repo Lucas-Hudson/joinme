@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   resources :friendships
   resources :tags
-  resources :notif_action, only: [:index]
+  resources :notif_actions, only: [:index]
 
   namespace :admin do
     root 'users#index'
