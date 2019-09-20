@@ -1,26 +1,42 @@
-<div class="row text-center">
+<div class="row text-center" style="margin-bottom:1em">
 
   <div class="col">
     <%= link_to root_path do %>
-       <%= image_tag "nav-home-on.svg", style: 'width:8em; padding-left:4em; padding-top:1em' %>
+      <% if current_page?(controller: 'venues', action: 'index') %>
+        <%= image_tag "nav-home-on.svg", style: 'width:8em; padding-left:4em; padding-top:1em' %>
+      <% else %>
+        <%= image_tag "nav-home-off.svg", style: 'width:8em; padding-left:4em; padding-top:1em' %>
+      <% end %>
     <% end %>
   </div>
 
   <div class="col">
-    <%= link_to root_path do %>
-       <%= image_tag "nav-inbox-off.svg", style: 'width:8em; padding-left:4em; padding-top:1em' %>
+    <%= link_to invitations_path do %>
+      <% if current_page?(controller: 'invitations', action: 'index') %>
+        <%= image_tag "nav-inbox-on.svg", style: 'width:8em; padding-left:4em; padding-top:1em' %>
+      <% else %>
+        <%= image_tag "nav-inbox-off.svg", style: 'width:8em; padding-left:4em; padding-top:1em' %>
+      <% end %>
     <% end %>
   </div>
 
   <div class="col">
-    <%= link_to notif_action_index_path do %>
-       <%= image_tag "nav-notification-off.svg", style: 'width:8em; padding-left:4em; padding-top:1em' %>
+    <%= link_to notif_actions_path do %>
+      <% if current_page?(controller: 'notif_actions', action: 'index') %>
+        <%= image_tag "nav-notification-on.svg", style: 'width:8em; padding-left:4em; padding-top:1em' %>
+      <% else %>
+        <%= image_tag "nav-notification-off.svg", style: 'width:8em; padding-left:4em; padding-top:1em' %>
+      <% end %>
     <% end %>
   </div>
 
   <div class="col">
-    <%= link_to root_path do %>
+    <%= link_to user_path(current_user) do %>
+      <% if current_page?(user_path(current_user)) %>
+       <%= image_tag "nav-profile-on.svg", style: 'width:8em; padding-left:4em; padding-top:1em' %>
+     <% else %>
        <%= image_tag "nav-profile-off.svg", style: 'width:8em; padding-left:4em; padding-top:1em' %>
+     <% end %>
     <% end %>
   </div>
 

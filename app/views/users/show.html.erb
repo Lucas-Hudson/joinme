@@ -101,6 +101,15 @@
   </div>
 </div>
 
+<% unless mobile_device == "desktop" %>
+<footer class="fixed-bottom">
+  <div class="row" style="margin:5em">
+    <div class="col text-center">
+      <%= link_to "Log Out", destroy_user_session_path, class: "btn-lg btn-danger", style:"font-size:3em", method: "delete" %>
+    </div>
+  </div>
+</footer>
+  <% end %>
 
 <style>
 

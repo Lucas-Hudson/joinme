@@ -1,0 +1,18 @@
+<div class="my-bg-grey" style="height:100vh">
+
+<br>
+
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-">
+        <h2>Notifications</h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" style="background-color:white">
+    <% @notifs.each do |notif| %>
+      <%= render 'layouts/notification', notif: notif %>
+    <% end %>
+
+  </div>
