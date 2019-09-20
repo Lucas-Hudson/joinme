@@ -22,13 +22,13 @@ class FriendshipsController < ApplicationController
   end
 
   def update
-    @friend_request = Friendship.find_by(user: params[:id], friend: current_user)
-    @friend_request.update(status: params[:status])
+    @friend_request = Friendship.find_by(user_id: params[:id], friend: current_user)
+    @friend_request.update(status: params[:status].to_i)
     FriendshipNotification.create!(actor_id: current_user.id, recipient_id: params[:id] , action_id: 3) #create the notification
   end
 
   def destroy
-    Friendship.find_by(user: params[:id], friend: current_user).destroy
+    Friendship.find_by(user_id: params[:id], friend: current_user).destroy
   end
 
   private

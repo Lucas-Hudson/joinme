@@ -17,8 +17,8 @@ class UserInvitesController < ApplicationController
         @invitation = Invitation.find(params[:invitation_id])
         UserInvite.create(invitation_id: params[:invitation_id], guest_id: params[:guest_id])
       else
-        if current_user.current_events_as_admin.find_by(venue_id: params[:venue_id])
-          @invitation = current_user.current_events_as_admin.find_by(venue: params[:venue_id])
+        if current_user.events.current.find_by(venue_id: params[:venue_id])
+          @invitation = current_user.events.current.find_by(venue_id: params[:venue_id])
           UserInvite.create(invitation_id: @invitation.id, guest_id: params[:guest_id])
         else
           @invitation = Invitation.create(admin_id: current_user.id, venue_id: params[:venue_id], start_date: Date.today)
@@ -32,7 +32,7 @@ class UserInvitesController < ApplicationController
   def update
     @user_invite = UserInvite.find_by(invitation_id: params[:id], guest: current_user)
     @invitation = @user_invite.invitation
-    @user_invite.update(status: params[:status])
+    @user_invite.update(status: params[:status].to_i)
     if params[:status] == 1
       InvitationNotification.create!(actor: current_user, recipient: @invitation.admin, action_id: 4, reference: @invitation.venue)
     elsif params[:status] == 2
