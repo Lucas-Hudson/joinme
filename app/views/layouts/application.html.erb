@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>JoinmeThp</title>
+    <title>JoinMe</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -14,18 +14,25 @@
 
   </head>
 
-  <body>
+    <body>
 
-<!-- Show Header if user is connected -->
-<% unless current_user == nil %>
-   <!-- Show Desktop Header -->
-      <%= render 'layouts/header' %>
-<% end %>
+      <!-- Show Header if user is connected -->
+      <% unless current_user == nil %>
 
-<!-- All Notifications -->
-<%= render 'layouts/flash' %>
+          <!-- Show Desktop Header -->
+          <% if mobile_device == "desktop" %>
+            <%= render 'layouts/header' %>
+          <!-- Show Mobile Header -->
+          <% else %>
+            <%= render 'layouts/m-header' %>
+          <% end %>
 
-    <%= yield %>
+      <% end %>
+
+      <!-- All Notifications -->
+      <%= render 'layouts/flash' %>
+
+          <%= yield %>
 
   </body>
 

@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   end
 
   resources :friendships
+  resources :tags
+  resources :notif_action, only: [:index]
 
   namespace :admin do
     root 'users#index'
@@ -17,4 +19,5 @@ Rails.application.routes.draw do
     resources :administrators, except: [:new, :edit, :destroy, :show]
     resources :owners, except: [:new, :edit, :destroy, :show]
   end
+
 end

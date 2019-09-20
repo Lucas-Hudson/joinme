@@ -5,7 +5,7 @@
     <br>
 
     <div class="row justify-content-center" style="padding-top:2em">
-      <h1>Ajouter un Lieu</h1>
+      <h1>Modifier un Lieu</h1>
     </div>
 
     <div class="row justify-content-center">
@@ -44,29 +44,11 @@
           </div>
 
           <div class="form-group">
-            <%= f.label 'Est-il possible de manger ?' %>
-            <%= check_box_tag :food, true, false %>
-          </div>
-
-          <div class="form-group">
             <%= f.label 'Prix de la Pinte' %>
             <%= f.number_field 'min_drink_price',min:0 ,class: 'form-control' %>
           </div>
 
           <br>
-
-          <div class="row">
-            <% @tags.each do |tag| %>
-            <div class="col-4">
-              <%= check_box_tag 'tag_ids[]', tag.id -%>
-              <%= h tag.tag_content -%>
-            </div>
-            <% end %>  
-          </div>
-
-
-
-          <br><br>
 
           <div class="form-group">
             <%= f.label 'video' %>
@@ -92,7 +74,7 @@
 
           <div class="row justify-content-center">
             <div class="actions">
-              <%= submit_tag "Ajouter Lieu", class:"btn btn-lg btn-primary my-primary-gradient", style:"width:10em; border-radius:2em" %>
+              <%= submit_tag "Mettre à jour", class:"btn btn-lg btn-primary my-primary-gradient", style:"width:10em; border-radius:2em" %>
             </div>
           </div>
 

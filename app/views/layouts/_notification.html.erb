@@ -4,7 +4,7 @@
   <div class="dropdown-item" style="background-color:<%= notification_color(notif) %>">
     <div class="row">
       <div class="col-2">
-        <%= image_tag "avatar.jpg", style: "width:4em; border-radius:5em" %>
+        <%= image_tag url_for(avatar(notif.actor)), class:"avatar-xl" %>
       </div>
         <div class="col text-truncate" style="height:3em; margin-top:auto; margin-bottom:auto; padding-left:1em">
           <small class="text-truncate"><strong> <%= notif.actor.first_name %> <%=notif.actor.last_name %></strong> <%= notif.action.content %> <br>
@@ -21,7 +21,7 @@
   <div class="dropdown-item">
     <div class="row">
       <div class="col-2">
-        <%= image_tag "avatar.jpg", style: "width:4em; border-radius:5em" %>
+        <%= image_tag url_for(avatar(notif.actor)), class:"avatar-xl" %>
       </div>
         <div class="col text-truncate" style="height:3em; margin-top:auto; margin-bottom:auto; padding-left:1em">
           <small class="text-truncate"><strong> <%= notif.actor.first_name %> <%=notif.actor.last_name %></strong> <%= notif.action.content %> <strong><%= notif.reference.name %> </strong>.<br>

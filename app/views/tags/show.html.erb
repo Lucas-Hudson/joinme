@@ -1,3 +1,17 @@
-<h1>A coder et vite !!</h1>
+<br><br>
 
-<p>signé, Mama Lu</p>
+<!-- Bloc Venues -->
+
+<div class="row" style="margin:auto; width:85%; min-width:80em">
+
+  <div class="col-12">
+    <h3 style="padding-left:1em"><strong>Ambiances <%= @tag.tag_content %></strong></h3><br>
+  </div>
+  
+<!-- Afficher toutes les Venues  -->
+  <% @tag.venues.each do |venue|%>
+    <div class="col-4" style="padding-bottom:4em">
+      <%= render 'venues/venue', venue: venue %>
+    </div>
+  <% end %>
+</div>

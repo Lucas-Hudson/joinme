@@ -38,7 +38,7 @@
 
     <h2 style="padding-left:2em">Evénements passés</h2><br>
     <div class="row">
-      <% @past_events.each do |past_event| %>
+      <% @past_events.sort_by{ |event| event.start_date}.reverse.each do |past_event| %>
         <div class="col-6">
           <%= render 'invitation', invitation: past_event %>
         </div>
