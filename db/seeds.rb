@@ -26,6 +26,29 @@ User.last.avatar.attach(io: File.open("#{path}0.4-avatar-lu.jpg"), filename: "0.
 
 puts "Created 4 Team Accounts with owner and admin priviledges."
 
+Tag.create(tag_content: "Détendu")
+Tag.create(tag_content: "Rock")
+Tag.create(tag_content: "Jazz")
+Tag.create(tag_content: "Club")
+Tag.create(tag_content: "Extérieur")
+Tag.create(tag_content: "Terrasse")
+Tag.create(tag_content: "Jardin")
+Tag.create(tag_content: "Boîte de nuit")
+Tag.create(tag_content: "Concert")
+Tag.create(tag_content: "Gratuit")
+Tag.create(tag_content: "Bar")
+Tag.create(tag_content: "Cocktail")
+Tag.create(tag_content: "Dj")
+Tag.create(tag_content: "Performance")
+Tag.create(tag_content: "Danse")
+Tag.create(tag_content: "Ephémère")
+Tag.create(tag_content: "Latino")
+Tag.create(tag_content: "Rooftop")
+
+
+
+puts "created 5 first tags"
+
 v1 = Venue.new
 v1.owner = User.all.sample
 v1.name = "La Felicità"
@@ -42,6 +65,10 @@ v1.images.attach(io: File.open("#{path}1.5-felicita-image2.jpg"), filename: "1.5
 v1.images.attach(io: File.open("#{path}1.6-felicita-image3.jpg"), filename: "1.6-felicita-image3.jpg", content_type: "image/jpg")
 v1.images.attach(io: File.open("#{path}1.7-felicita-image4.jpg"), filename: "1.7-felicita-image4.jpg", content_type: "image/jpg")
 v1.save
+
+JoinTagVenue.create(tag: Tag.find_by(tag_content:"Détendu"), venue: Venue.last)
+JoinTagVenue.create(tag: Tag.find_by(tag_content:"Terrasse"), venue: Venue.last)
+JoinTagVenue.create(tag: Tag.find_by(tag_content:"Dj"), venue: Venue.last)
 
 puts "Created La Felicita venue."
 
@@ -62,6 +89,11 @@ v1.images.attach(io: File.open("#{path}2.6-sinaloa-image3.jpg"), filename: "2.6-
 v1.images.attach(io: File.open("#{path}2.7-sinaloa-image4.jpg"), filename: "2.7-sinaloa-image4.jpg", content_type: "image/jpg")
 v1.save
 
+JoinTagVenue.create(tag: Tag.find_by(tag_content:"Latino"), venue: Venue.last)
+JoinTagVenue.create(tag: Tag.find_by(tag_content:"Performance"), venue: Venue.last)
+JoinTagVenue.create(tag: Tag.find_by(tag_content:"Dj"), venue: Venue.last)
+JoinTagVenue.create(tag: Tag.find_by(tag_content:"Cocktail"), venue: Venue.last)
+
 puts "Created SinaLoa venue."
 
 v1 = Venue.new
@@ -80,6 +112,11 @@ v1.images.attach(io: File.open("#{path}3.5-jardin-image2.jpg"), filename: "3.5-j
 v1.images.attach(io: File.open("#{path}3.6-jardin-image3.jpg"), filename: "3.6-jardin-image3.jpg", content_type: "image/jpg")
 v1.images.attach(io: File.open("#{path}3.7-jardin-image4.jpg"), filename: "3.7-jardin-image4.jpg", content_type: "image/jpg")
 v1.save
+
+
+JoinTagVenue.create(tag: Tag.find_by(tag_content:"Rooftop"), venue: Venue.last)
+JoinTagVenue.create(tag: Tag.find_by(tag_content:"Jardin"), venue: Venue.last)
+JoinTagVenue.create(tag: Tag.find_by(tag_content:"Détendu"), venue: Venue.last)
 
 puts "Created Le Jardin Suspendu venue."
 
@@ -100,6 +137,12 @@ v1.images.attach(io: File.open("#{path}4.6-puebla-image3.jpg"), filename: "4.6-p
 v1.images.attach(io: File.open("#{path}4.7-puebla-image4.jpg"), filename: "4.7-puebla-image4.jpg", content_type: "image/jpg")
 v1.save
 
+
+JoinTagVenue.create(tag: Tag.find_by(tag_content:"Extérieur"), venue: Venue.last)
+JoinTagVenue.create(tag: Tag.find_by(tag_content:"Jardin"), venue: Venue.last)
+JoinTagVenue.create(tag: Tag.find_by(tag_content:"Performance"), venue: Venue.last)
+JoinTagVenue.create(tag: Tag.find_by(tag_content:"Détendu"), venue: Venue.last)
+
 puts "Created Pavillon Puebla venue."
 
 v1 = Venue.new
@@ -118,6 +161,10 @@ v1.images.attach(io: File.open("#{path}5.5-lulu-image2.jpg"), filename: "5.5-lul
 v1.images.attach(io: File.open("#{path}5.6-lulu-image3.jpg"), filename: "5.6-lulu-image3.jpg", content_type: "image/jpg")
 v1.images.attach(io: File.open("#{path}5.7-lulu-image4.jpg"), filename: "5.7-lulu-image4.jpg", content_type: "image/jpg")
 v1.save
+
+JoinTagVenue.create(tag: Tag.find_by(tag_content:"Cocktail"), venue: Venue.last)
+JoinTagVenue.create(tag: Tag.find_by(tag_content:"Jazz"), venue: Venue.last)
+JoinTagVenue.create(tag: Tag.find_by(tag_content:"Détendu"), venue: Venue.last)
 
 puts "Created Lulu White Drinking Club venue."
 
@@ -138,6 +185,10 @@ v1.images.attach(io: File.open("#{path}6.6-perchoir-image3.jpg"), filename: "6.6
 v1.images.attach(io: File.open("#{path}6.7-perchoir-image4.jpg"), filename: "6.7-perchoir-image4.jpg", content_type: "image/jpg")
 v1.save
 
+JoinTagVenue.create(tag: Tag.find_by(tag_content:"Rooftop"), venue: Venue.last)
+JoinTagVenue.create(tag: Tag.find_by(tag_content:"Dj"), venue: Venue.last)
+JoinTagVenue.create(tag: Tag.find_by(tag_content:"Détendu"), venue: Venue.last)
+
 puts "Created Le Perchoir venue."
 
 v1 = Venue.new
@@ -156,6 +207,10 @@ v1.images.attach(io: File.open("#{path}7.5-djoon-image2.jpg"), filename: "7.5-dj
 v1.images.attach(io: File.open("#{path}7.6-djoon-image3.jpg"), filename: "7.6-djoon-image3.jpg", content_type: "image/jpg")
 v1.images.attach(io: File.open("#{path}7.7-djoon-image4.jpg"), filename: "7.7-djoon-image4.jpg", content_type: "image/jpg")
 v1.save
+
+JoinTagVenue.create(tag: Tag.find_by(tag_content:"Performance"), venue: Venue.last)
+JoinTagVenue.create(tag: Tag.find_by(tag_content:"Dj"), venue: Venue.last)
+JoinTagVenue.create(tag: Tag.find_by(tag_content:"Rock"), venue: Venue.last)
 
 puts "Created Djoon venue."
 
@@ -176,6 +231,11 @@ v1.images.attach(io: File.open("#{path}8.6-bains-image3.jpg"), filename: "8.6-ba
 v1.images.attach(io: File.open("#{path}8.7-bains-image4.jpg"), filename: "8.7-bains-image4.jpg", content_type: "image/jpg")
 v1.save
 
+JoinTagVenue.create(tag: Tag.find_by(tag_content:"Club"), venue: Venue.last)
+JoinTagVenue.create(tag: Tag.find_by(tag_content:"Danse"), venue: Venue.last)
+JoinTagVenue.create(tag: Tag.find_by(tag_content:"Dj"), venue: Venue.last)
+JoinTagVenue.create(tag: Tag.find_by(tag_content:"Cocktail"), venue: Venue.last)
+
 puts "Created Le Bains venue."
 
 v1 = Venue.new
@@ -194,6 +254,10 @@ v1.images.attach(io: File.open("#{path}9.5-supersonic-image2.jpg"), filename: "9
 v1.images.attach(io: File.open("#{path}9.6-supersonic-image3.jpg"), filename: "9.6-supersonic-image3.jpg", content_type: "image/jpg")
 v1.images.attach(io: File.open("#{path}9.7-supersonic-image4.jpg"), filename: "9.7-supersonic-image4.jpg", content_type: "image/jpg")
 v1.save
+
+JoinTagVenue.create(tag: Tag.find_by(tag_content:"Performance"), venue: Venue.last)
+JoinTagVenue.create(tag: Tag.find_by(tag_content:"Danse"), venue: Venue.last)
+JoinTagVenue.create(tag: Tag.find_by(tag_content:"Dj"), venue: Venue.last)
 
 puts "Created Supersonic venue."
 
@@ -231,11 +295,3 @@ NotifAction.create(content: "participe à")
 NotifAction.create(content: "ne participe pas à")
 
 puts "Created Notification Actions."
-
-Tag.create(tag_content: "Détendu")
-Tag.create(tag_content: "Rock")
-Tag.create(tag_content: "Jazz")
-Tag.create(tag_content: "Clubbing")
-Tag.create(tag_content: "Ephémère")
-
-puts "created 5 first tags"
