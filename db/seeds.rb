@@ -83,6 +83,121 @@ v1.save
 
 puts "Created Le Jardin Suspendu venue."
 
+v1 = Venue.new
+v1.owner = User.all.sample
+v1.name = "Pavillon Puebla"
+v1.description = "Dans le parc des Buttes-Chaumont, un pavillon datant du 19ème siècle : le Pavillon Puebla. Vous y trouverez un restaurant, deux terrasses, deux bars, des constructions de bois, des fauteuils marocains, la paix sous l’ombre des marronniers, la fête sur le dance-floor quand la nuit tombe."
+v1.min_drink_price = 5
+v1.address = "Avenue Darcel (Located in: Parc des Buttes-Chaumont)"
+v1.city = "Paris"
+v1.zip_code = "75019"
+v1.video.attach(io: File.open("#{path}4.1-puebla-video.mp4"), filename: "4.1-puebla-video", content_type: "video/mp4")
+v1.thumbnail.attach(io: File.open("#{path}4.2-puebla-thumbnail.jpg"), filename: "4.2-puebla-thumbnail.jpg", content_type: "image/jpg")
+v1.avatar.attach(io: File.open("#{path}4.3-puebla-avatar.jpg"), filename: "4.3-puebla-avatar.jpg", content_type: "image/jpg")
+v1.images.attach(io: File.open("#{path}4.4-puebla-image1.jpg"), filename: "4.4-puebla-image1.jpg", content_type: "image/jpg")
+v1.images.attach(io: File.open("#{path}4.5-puebla-image2.jpg"), filename: "4.5-puebla-image2.jpg", content_type: "image/jpg")
+v1.images.attach(io: File.open("#{path}4.6-puebla-image3.jpg"), filename: "4.6-puebla-image3.jpg", content_type: "image/jpg")
+v1.images.attach(io: File.open("#{path}4.7-puebla-image4.jpg"), filename: "4.7-puebla-image4.jpg", content_type: "image/jpg")
+v1.save
+
+puts "Created Pavillon Puebla venue."
+
+v1 = Venue.new
+v1.owner = User.all.sample
+v1.name = "Lulu White Drinking Club"
+v1.description = "Located on Rue Frochot, neighbouring the winding streets of Montmartre, Lulu White is a haven for the late night wanderers of Paris whose thirst for excess has not yet been quenched. Lulu invites the curious to extend their evenings and explore the carefully crafted menu. The bar presents live music ranging from Jazz, Blues to Contemporary Folk, Lulu’s Live Evenings are inspired by the music culture of New Orleans.Cheers!"
+v1.min_drink_price = 10
+v1.address = "12 RUE FROCHOT 75009 PARIS"
+v1.city = "Paris"
+v1.zip_code = "75009"
+v1.video.attach(io: File.open("#{path}5.1-lulu-video.mp4"), filename: "5.1-lulu-video", content_type: "video/mp4")
+v1.thumbnail.attach(io: File.open("#{path}5.2-lulu-thumbnail.jpg"), filename: "5.2-lulu-thumbnail.jpg", content_type: "image/jpg")
+v1.avatar.attach(io: File.open("#{path}5.3-lulu-avatar.jpg"), filename: "5.3-lulu-avatar.jpg", content_type: "image/jpg")
+v1.images.attach(io: File.open("#{path}5.4-lulu-image1.jpg"), filename: "5.4-lulu-image1.jpg", content_type: "image/jpg")
+v1.images.attach(io: File.open("#{path}5.5-lulu-image2.jpg"), filename: "5.5-lulu-image2.jpg", content_type: "image/jpg")
+v1.images.attach(io: File.open("#{path}5.6-lulu-image3.jpg"), filename: "5.6-lulu-image3.jpg", content_type: "image/jpg")
+v1.images.attach(io: File.open("#{path}5.7-lulu-image4.jpg"), filename: "5.7-lulu-image4.jpg", content_type: "image/jpg")
+v1.save
+
+puts "Created Lulu White Drinking Club venue."
+
+v1 = Venue.new
+v1.owner = User.all.sample
+v1.name = "Le Perchoir"
+v1.description = "Au 6ème et 7ème étage d’un immeuble industriel, vous trouverez un toit-terrasse, un grand bar, un restaurant, des cours de sport, une cabane à snack . Vous verrez des oiseaux, le Sacré-Cœur, des cheminées, des plants de tomates, des vignes, une pergola, des coussins moelleux."
+v1.min_drink_price = 5
+v1.address = "14 Rue Crespin du Gast"
+v1.city = "Paris"
+v1.zip_code = "75011"
+v1.video.attach(io: File.open("#{path}6.1-perchoir-video.mp4"), filename: "6.1-perchoir-video", content_type: "video/mp4")
+v1.thumbnail.attach(io: File.open("#{path}6.2-perchoir-thumbnail.jpg"), filename: "6.2-perchoir-thumbnail.jpg", content_type: "image/jpg")
+v1.avatar.attach(io: File.open("#{path}6.3-perchoir-avatar.jpg"), filename: "6.3-perchoir-avatar.jpg", content_type: "image/jpg")
+v1.images.attach(io: File.open("#{path}6.4-perchoir-image1.jpg"), filename: "6.4-perchoir-image1.jpg", content_type: "image/jpg")
+v1.images.attach(io: File.open("#{path}6.5-perchoir-image2.jpg"), filename: "6.5-perchoir-image2.jpg", content_type: "image/jpg")
+v1.images.attach(io: File.open("#{path}6.6-perchoir-image3.jpg"), filename: "6.6-perchoir-image3.jpg", content_type: "image/jpg")
+v1.images.attach(io: File.open("#{path}6.7-perchoir-image4.jpg"), filename: "6.7-perchoir-image4.jpg", content_type: "image/jpg")
+v1.save
+
+puts "Created Le Perchoir venue."
+
+v1 = Venue.new
+v1.owner = User.all.sample
+v1.name = "Djoon"
+v1.description = "Le Djoon est un resto-club qui semble débarqué de la Grosse Pomme : immense loft sur deux étages, baie vitrée donnant sur le quai de la Gare près de la BnF, décor sophistiqué, bar à cocktails trendy et canapés lounge : ici la place ne manque pas. Les spécialités de la maison ? Les beats groovy (funk, hip-hop, soul), house et deep house, et un mélange des deux : funky-house, nu soul. Les soirées Motown Party, My Grooves sont particulièrement populaires."
+v1.min_drink_price = 5
+v1.address = "22 Boulevard Vincent Auriol"
+v1.city = "Paris"
+v1.zip_code = "75013"
+v1.video.attach(io: File.open("#{path}7.1-djoon-video.mp4"), filename: "7.1-djoon-video", content_type: "video/mp4")
+v1.thumbnail.attach(io: File.open("#{path}7.2-djoon-thumbnail.jpg"), filename: "7.2-djoon-thumbnail.jpg", content_type: "image/jpg")
+v1.avatar.attach(io: File.open("#{path}7.3-djoon-avatar.png"), filename: "7.3-djoon-avatar.png", content_type: "image/png")
+v1.images.attach(io: File.open("#{path}7.4-djoon-image1.jpg"), filename: "7.4-djoon-image1.jpg", content_type: "image/jpg")
+v1.images.attach(io: File.open("#{path}7.5-djoon-image2.jpg"), filename: "7.5-djoon-image2.jpg", content_type: "image/jpg")
+v1.images.attach(io: File.open("#{path}7.6-djoon-image3.jpg"), filename: "7.6-djoon-image3.jpg", content_type: "image/jpg")
+v1.images.attach(io: File.open("#{path}7.7-djoon-image4.jpg"), filename: "7.7-djoon-image4.jpg", content_type: "image/jpg")
+v1.save
+
+puts "Created Djoon venue."
+
+v1 = Venue.new
+v1.owner = User.all.sample
+v1.name = "Les Bains"
+v1.description = "Our music programming team is on constant lookout for new sounds from DJs, artists, rock and pop groups. A creative elixir to nourish the legendary Club des Bains. The décor pays vibrant tribute to the club's legendary past: the mythical pool, Philippe Starck's black and white checkerboard floor, the lava stone bar, a stage for memorable shows, concerts and events. The doorman at the Club's entrance ensures it stays eclectic."
+v1.min_drink_price = 10
+v1.address = " 7 Rue du Bourg l'Abbé"
+v1.city = "Paris"
+v1.zip_code = "75003"
+v1.video.attach(io: File.open("#{path}8.1-bains-video.mp4"), filename: "8.1-bains-video", content_type: "video/mp4")
+v1.thumbnail.attach(io: File.open("#{path}8.2-bains-thumbnail.jpg"), filename: "8.2-bains-thumbnail.jpg", content_type: "image/jpg")
+v1.avatar.attach(io: File.open("#{path}8.3-bains-avatar.jpg"), filename: "8.3-bains-avatar.jpg", content_type: "image/jpg")
+v1.images.attach(io: File.open("#{path}8.4-bains-image1.jpg"), filename: "8.4-bains-image1.jpg", content_type: "image/jpg")
+v1.images.attach(io: File.open("#{path}8.5-bains-image2.jpg"), filename: "8.5-bains-image2.jpg", content_type: "image/jpg")
+v1.images.attach(io: File.open("#{path}8.6-bains-image3.jpg"), filename: "8.6-bains-image3.jpg", content_type: "image/jpg")
+v1.images.attach(io: File.open("#{path}8.7-bains-image4.jpg"), filename: "8.7-bains-image4.jpg", content_type: "image/jpg")
+v1.save
+
+puts "Created Le Bains venue."
+
+v1 = Venue.new
+v1.owner = User.all.sample
+v1.name = "Supersonic"
+v1.description = "Niché à Bastille dans une ancienne fabrique réaménagée en loft, ce bar-concert-club offre un cadre original pour découvrir les talents de la scène indie pop, rock, éléctro, à l'occasion de concerts gratuits. Ses points forts: sa scène visible du rez-de-chaussée et de la mezzanine, un « fake food truck » où vous pourrez déguster hot-dos, bruschettas et planches du terroir à toute heure. Le Supersonic est un lieu chaleureux, accessible et résolument festif !"
+v1.min_drink_price = 5
+v1.address = "9 rue Biscornets"
+v1.city = "Paris"
+v1.zip_code = "75012"
+v1.video.attach(io: File.open("#{path}9.1-supersonic-video.mp4"), filename: "9.1-supersonic-video", content_type: "video/mp4")
+v1.thumbnail.attach(io: File.open("#{path}9.2-supersonic-thumbnail.jpg"), filename: "9.2-supersonic-thumbnail.jpg", content_type: "image/jpg")
+v1.avatar.attach(io: File.open("#{path}9.3-supersonic-avatar.jpg"), filename: "9.3-supersonic-avatar.jpg", content_type: "image/jpg")
+v1.images.attach(io: File.open("#{path}9.4-supersonic-image1.jpg"), filename: "9.4-supersonic-image1.jpg", content_type: "image/jpg")
+v1.images.attach(io: File.open("#{path}9.5-supersonic-image2.jpg"), filename: "9.5-supersonic-image2.jpg", content_type: "image/jpg")
+v1.images.attach(io: File.open("#{path}9.6-supersonic-image3.jpg"), filename: "9.6-supersonic-image3.jpg", content_type: "image/jpg")
+v1.images.attach(io: File.open("#{path}9.7-supersonic-image4.jpg"), filename: "9.7-supersonic-image4.jpg", content_type: "image/jpg")
+v1.save
+
+puts "Created Supersonic venue."
+
+
 10.times do
   User.create(email: Faker::Internet.email, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, password: "123456", password_confirmation: "123456")
 end
