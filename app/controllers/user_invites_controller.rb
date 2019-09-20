@@ -18,7 +18,7 @@ class UserInvitesController < ApplicationController
         UserInvite.create(invitation_id: params[:invitation_id], guest_id: params[:guest_id])
       else
         if current_user.events.current.find_by(venue_id: params[:venue_id])
-          @invitation = current_user.events.current.find_by(venue: params[:venue_id])
+          @invitation = current_user.events.current.find_by(venue_id: params[:venue_id])
           UserInvite.create(invitation_id: @invitation.id, guest_id: params[:guest_id])
         else
           @invitation = Invitation.create(admin_id: current_user.id, venue_id: params[:venue_id], start_date: Date.today)
