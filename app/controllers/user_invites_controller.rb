@@ -3,7 +3,7 @@ class UserInvitesController < ApplicationController
   def new
     # If the current_user is admin of a current event at the venue on which he/she clicked
     if current_user.events.current.find_by(venue: params[:format])
-      @invitation = current_user.current_events_as_admin.find_by(venue: params[:format])
+      @invitation = current_user.events.current.find_by(venue: params[:format])
       @friends_to_invite = current_user.friends - current_user.sent_friend_requests - @invitation.guests
     else
       @friends_to_invite = current_user.friends - current_user.sent_friend_requests
@@ -37,7 +37,7 @@ class UserInvitesController < ApplicationController
       InvitationNotification.create!(actor: current_user, recipient: @invitation.admin, action_id: 4, reference: @invitation.venue)
     elsif params[:status] == 2
       InvitationNotification.create!(actor: current_user, recipient: @invitation.admin, action_id: 5, reference: @invitation.venue)
-    end      
+    end
   end
 
 

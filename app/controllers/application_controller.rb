@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
     helper_method :received_notifications
     helper_method :unread_notifications
     helper_method :notification_color
+    helper_method :total_events
     # Initiates variables before loading page. Otherwise the variable comes back nil...
     before_action :set_constants
 
@@ -20,6 +21,10 @@ class ApplicationController < ActionController::Base
         @current_event_count = @current_events_as_admin.count + @current_events_as_guest.count
         @past_events = @past_events_as_admin + @past_events_as_guest
       end
+    end
+
+    def total_events(user)
+      user.events.current + user.events.past + user.invitations.current + user.invitations.past
     end
 
     #Allows us to grab current_user profile pic in all cases (if there is no attached avatars, we display a default avatar)

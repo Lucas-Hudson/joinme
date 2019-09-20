@@ -24,17 +24,26 @@
         €€</span><br>
       <span class="post-subtitle" style="font-size:1.2em">
         <% 5.times do %>
-        <%=image_tag "star-on.svg", style: "width:0.7em; margin-left:-0.15em"%>
+          <%=image_tag "star-on.svg", style: "width:0.7em; margin-left:-0.15em"%>
         <% end %>
       </span>
 
     </div>
   </div>
-
+<% end %>
   <hr>
 
   <div class="row">
-    <p class="post-subtitle" style="margin-left:1em; line-height:2.8em">Détendu · Studieux</p>
+    <p class="post-subtitle" style="margin-left:1em; line-height:2.8em">
+      <% venue.tags.each do |tag| %>
+        <%= link_to tag_path(tag.id), style: "color: black; text-decoration:none" do %>
+          <%= tag.tag_content %>
+            <% unless tag == venue.tags.last %>
+              ·
+            <% end %>
+        <% end %>
+      <% end %>
+    </p>
   </div>
 
   <hr>
@@ -42,7 +51,9 @@
     <div class="row align-items-center" style="padding:0.3em 0.5em">
       <% venue.participants.last(5).each do |participant| %>
         <div class="col-">
-          <%= image_tag url_for(avatar(participant)), class:"avatar-sm", style:"margin-right:-0.5em" %>
+          <%= link_to user_path(participant), style: "color: black; text-decoration:none" do %>
+            <%= image_tag url_for(avatar(participant)), class:"avatar-sm", style:"margin-right:-0.5em" %>
+          <% end %>
         </div>
       <% end %>
       <% if venue.participants.count < 6 %>
@@ -55,7 +66,7 @@
       </div>
       <% end %>
     </div>
-  <% end %>
+
   <hr>
 
   <div class="row text-center align-items-center" style="margin:0px; padding:0.5em 0em">
