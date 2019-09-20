@@ -11,7 +11,8 @@
               <%= render 'invitation', invitation: current_event_as_admin %>
             </div>
             <% end %>
-            <% @current_events_as_guest.each do |current_event_as_guest| %>
+
+            <% current_user.invitations.current.each do |current_event_as_guest| %>
             <div class="col-6">
               <%= render 'invitation', invitation: current_event_as_guest %>
             </div>
