@@ -3,7 +3,7 @@
   <%= link_to friendships_path(notif: notif), style:"text-decoration:none; color:black" do %>
   <div class="dropdown-item" style="background-color:<%= notification_color(notif) %>">
     <div class="row">
-      <div class="col-2">
+      <div class="col-">
         <%= image_tag url_for(avatar(notif.actor)), class:"avatar-xl" %>
       </div>
         <div class="col text-truncate" style="height:3em; margin-top:auto; margin-bottom:auto; padding-left:1em">
@@ -20,7 +20,7 @@
   <%= link_to invitations_path(notif: notif), style:"text-decoration:none; color:black" do %>
   <div class="dropdown-item">
     <div class="row">
-      <div class="col-2">
+      <div class="col-">
         <%= image_tag url_for(avatar(notif.actor)), class:"avatar-xl" %>
       </div>
         <div class="col text-truncate" style="height:3em; margin-top:auto; margin-bottom:auto; padding-left:1em">
