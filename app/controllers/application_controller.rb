@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
     def set_constants
       if user_signed_in?
         @current_events_as_admin = current_user.events.current
-        @current_events_as_guest = current_user.invitations
+        @current_events_as_guest = current_user.invitations.current
 
         @past_events_as_admin = current_user.events.past
         @past_events_as_guest = current_user.invitations.past
