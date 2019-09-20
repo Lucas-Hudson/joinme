@@ -33,28 +33,63 @@
 
   </div>
 
-</div>
+
 
 <div class="container">
-  <div class="row align-items-center" style="height:250px">
+  <div class="row align-items-center" style="height:250px; color:white">
     <div class="col-4">
-      <h6>1.2km</h6>
-      <h4><%= @venue.name %></h4>
-      <p><%= @venue.city %><br>
-        Ouvert jusqu’à 01:00
-      </p>
-      <a class="btn btn-primary my-primary-gradient" style="border-radius:5em"
-        <%= link_to "STUDIEUX", root_path %></a>
-        <a class="btn btn-primary my-primary-gradient" style="border-radius:5em"
-        <%= link_to "ITALIAN FOOD", root_path %></a>
-        </div>
+      <div class="row">
+        <h2><strong><%= @venue.name %></strong></h2>
+      </div>
+      <div class="row">
+        <small><%= @venue.address %>, <%= @venue.zip_code %> <%= @venue.city %></small>
+      </div>
+      <div class="row">
+        <small>Ouvert jusqu’à 01:00</small>
+      </div>
+      <br>
+      <div class="row align-items-center" style="padding:0.3em 0.5em">
+        <% @venue.participants.last(5).each do |participant| %>
+          <div class="col-">
+            <%= link_to user_path(participant), style: "color: black; text-decoration:none" do %>
+              <%= image_tag url_for(avatar(participant)), class:"avatar-sm", style:"margin-right:-0.5em" %>
+            <% end %>
+          </div>
+        <% end %>
+        <% if @venue.participants.count < 6 %>
+          <div class="col">
+            <p class="post-subtitle" style="self-align-center; line-height:2.2em"><%= @venue.participants.count %> participants.</p>
+          </div>
+        <% else %>
         <div class="col">
-        <h5>Description</h5>
+          <p class="post-subtitle" style="self-align-center; line-height:2.2em"> et <%= @venue.participants.count - 5 %> participants.</p>
+        </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="col">
+      <div class="row">
+        <h5 style="font-weight:700">Description</h5>
+      </div>
+      <div class="row">
         <p><%= @venue.description %></p>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-">
+          <% @venue.tags.each do |tag| %>
+            <div class="btn btn-primary mr-2">
+              <%= tag.tag_content %>
+            </div>
+          <% end %>
+
+        </div>
+
+      </div>
     </div>
   </div>
 </div>
-
+</div>
 <br>
 
 
@@ -84,7 +119,7 @@
         <div class="col" style="margin:0em 1em">
           <div class="row align-items-center border" style="height:15em">
             <div class="col text-center">
-              <p> <%= image_tag("beer.svg", style: "padding-right: 2 px") %> Pinte : 5€</p>
+              <p> <%= image_tag("beer.svg", style: "padding-right: 2 px") %> Pinte : <%= @venue.min_drink_price %>€</p>
             </div>
           </div>
         </div>
@@ -92,7 +127,13 @@
         <div class="col" style="margin:0em 1em">
           <div class="row align-items-center border" style="height:15em">
             <div class="col text-center">
-              <p> <%= image_tag("fork.svg", style: "padding-right: 5px") %>Oui</p>
+              <p> <%= image_tag("fork.svg", style: "padding-right: 5px") %>
+                <% if @venue.food == true %>
+                  Oui
+                <% else %>
+                  Non
+                <% end %>
+            </p>
             </div>
           </div>
         </div>
@@ -149,6 +190,8 @@
   </div>
 </div>
 
+<br><br><br><br>
+
 <footer class="fixed-bottom" style="background-color:white; box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1)">
   <div class="container">
     <div class="row align-items-center" style="height:4em">
@@ -158,14 +201,25 @@
       <div class="col-">
         <p style="margin:0em; margin-right:1em"><%= @venue.name %></p>
       </div>
+      <% if @venue.owner == current_user %>
+      <div class="col-">
+        <%= link_to "Edit Venue", edit_venue_path(@venue), class:"btn btn-outline-primary" %>
+      </div>
+      <% end %>
       <div class="col">
       </div>
-      <div class="col-">
-        <%= link_to "Share", new_user_invite_path(@venue.id), class:"btn btn-outline-primary", style:"width:10em; margin-right:1em" %>
+      <%= link_to new_user_invite_path(@venue.id) do %>
+      <div class="col- btn btn-outline-warning" style="width:10em">
+        <span>Share</span>
+        <%= image_tag "share-btn.svg", style: "width:1em; margin-bottom:0.2em" %>
       </div>
-      <div class="col-">
-        <%= link_to "Join", venue_invitations_path(@venue.id), method: :post, class:"btn btn-primary", style:"width:10em; margin-right:1em" %>
+      <% end %>
+      <%= link_to venue_invitations_path(@venue.id), method: :post do %>
+      <div class="col- btn btn-outline-success" style="width:10em; margin-left:1em">
+        <span>Join</span>
+        <%= image_tag "join-btn.svg", style: "width:0.8em; margin-bottom:0.2em" %>
       </div>
+      <% end %>
 
 
     </div>

@@ -1,0 +1,27 @@
+<div class="row text-center">
+
+  <div class="col">
+    <%= link_to root_path do %>
+       <%= image_tag "nav-home-on.svg", style: 'width:8em; padding-left:4em; padding-top:1em' %>
+    <% end %>
+  </div>
+
+  <div class="col">
+    <%= link_to root_path do %>
+       <%= image_tag "nav-inbox-off.svg", style: 'width:8em; padding-left:4em; padding-top:1em' %>
+    <% end %>
+  </div>
+
+  <div class="col">
+    <%= link_to notif_action_index_path do %>
+       <%= image_tag "nav-notification-off.svg", style: 'width:8em; padding-left:4em; padding-top:1em' %>
+    <% end %>
+  </div>
+
+  <div class="col">
+    <%= link_to root_path do %>
+       <%= image_tag "nav-profile-off.svg", style: 'width:8em; padding-left:4em; padding-top:1em' %>
+    <% end %>
+  </div>
+
+</div>
