@@ -39,4 +39,5 @@ class User < ApplicationRecord
   has_many :unread_invitation_notifications, -> { where(is_read?: false) }, class_name: 'InvitationNotification', foreign_key: :recipient
 
 
+
 end
